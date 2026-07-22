@@ -1,0 +1,50 @@
+# Crazy Tools
+
+> Free, professional-grade browser-based tools for developers, designers, and everyday workflows. All processing runs locally in the browser unless noted.
+
+Crazy Tools is a large hub of utilities across PDF, image, developer, text, converter, generator, and security categories. Each tool is designed to be fast, precise, and privacy-preserving.
+
+## Pages
+
+- [Home](/): Landing page and universal tool search.
+- [All Tools](/tools): Complete catalog of available tools.
+- [Sign in](/auth): Optional account for favorites and history.
+
+## Categories
+
+- [PDF](/category/pdf): Compress, merge, and convert PDF documents.
+- [Image](/category/image): Compression, OCR, SVG optimization, and conversion.
+- [Developer](/category/developer): Formatters, decoders, generators, and developer utilities.
+- [Text](/category/text): Case conversion, diff, Markdown export.
+- [Converters](/category/converters): Format conversion across images, documents, and data.
+- [Generators](/category/generators): QR codes, UUIDs, passwords, and more.
+- [Security](/category/security): Hashing, encoding, and token inspection.
+
+## Featured Tools
+
+- [Image to PDF](/tools/image-to-pdf): Combine images into a paginated PDF.
+- [PDF Compress](/tools/pdf-compress): Reduce PDF file size locally.
+- [PDF Merge](/tools/pdf-merge): Combine multiple PDFs.
+- [Image Compressor](/tools/image-compress): Reduce image size with quality control.
+- [JSON Formatter](/tools/json-formatter): Format, validate, and minify JSON.
+- [QR Code Generator](/tools/qr-generator): Produce high-density QR codes.
+- [Base64 Encoder](/tools/base64): Encode and decode Base64.
+- [Markdown to PDF](/tools/markdown-to-pdf): Render Markdown to PDF.
+- [LaTeX to PDF](/tools/latex-to-pdf): Compile LaTeX to PDF.
+- [Image OCR](/tools/ocr): Extract text from images.
+- [SVG Optimizer](/tools/svg-optimizer): Minify and optimize SVG files.
+
+## Optional
+
+- [HTML Viewer](/tools/html-viewer)
+- [Regex Tester](/tools/regex-tester)
+- [JWT Decoder](/tools/jwt-decoder)
+- [Password Generator](/tools/password-generator)
+- [Hash Generator](/tools/hash-generator)
+- [UUID Generator](/tools/uuid-generator)
+- [Color Converter](/tools/color-converter)
+- [Unit Converter](/tools/unit-converter)
+- [CSV to JSON](/tools/csv-json)
+- [Diff Viewer](/tools/diff-viewer)
+- [Case Converter](/tools/case-converter)
+- [CSS Specificity Calculator](/tools/css-specificity)
