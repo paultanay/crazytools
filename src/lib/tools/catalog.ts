@@ -17,6 +17,7 @@ import {
   Table,
   Code2,
   ScanLine,
+  Eraser,
   Fingerprint,
   Diff,
   Type,
@@ -86,6 +87,7 @@ export const TOOLS: Tool[] = [
 
   { slug: "latex-to-pdf", name: "LaTeX to PDF", short: "Compile LaTeX documents to PDF.", description: "Compile LaTeX with pdflatex, xelatex, or lualatex and download the rendered PDF. Backed by a hosted TeX engine.", categories: ["converters", "pdf", "developer"], icon: FileCode, keywords: ["tex", "compile", "pdflatex", "xelatex"], available: true },
   { slug: "ocr", name: "Image OCR", short: "Extract text from images.", description: "Detect and export text from screenshots and photos with Tesseract, entirely in your browser.", categories: ["image", "text", "converters"], icon: ScanLine, keywords: ["recognize", "extract", "tesseract"], available: true },
+  { slug: "background-remover", name: "Background Remover", short: "Remove image backgrounds with AI.", description: "Remove backgrounds from portraits, products, and graphics with a neural network that runs entirely in your browser. No uploads, no servers.", categories: ["image"], icon: Eraser, keywords: ["remove", "transparent", "erase", "subject"], available: true },
   { slug: "svg-optimizer", name: "SVG Optimizer", short: "Minify and optimize SVG files.", description: "Reduce SVG size while preserving fidelity, powered by SVGO in the browser.", categories: ["image", "developer"], icon: Code2, keywords: ["minify", "vector", "svgo"], available: true },
   { slug: "css-specificity", name: "CSS Specificity Calculator", short: "Calculate CSS selector specificity.", description: "Paste CSS selectors and compute their specificity as (ID, Class, Element) — handles :is(), :not(), :where(), attributes, and pseudo-elements.", categories: ["developer"], icon: Cog, keywords: ["css", "selector", "specificity", "cascade"], available: true },
   { slug: "json-validator", name: "JSON Validator & Viewer", short: "Validate JSON and inspect it in a tree view.", description: "Validate JSON syntax with precise error diagnostics and explore the parsed structure in a collapsible tree viewer. Runs entirely in your browser.", categories: ["developer"], icon: Braces, keywords: ["json", "validate", "viewer", "tree", "lint"], available: true },

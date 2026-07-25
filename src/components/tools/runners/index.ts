@@ -20,6 +20,7 @@ import { DiffViewerRunner } from "./diff-viewer";
 import { CaseConverterRunner } from "./case-converter";
 import { LatexToPdfRunner } from "./latex-to-pdf";
 import { OcrRunner } from "./ocr";
+import { BackgroundRemoverRunner } from "./background-remover";
 import { SvgOptimizerRunner } from "./svg-optimizer";
 import { CssSpecificityRunner } from "./css-specificity";
 import { JsonValidatorRunner } from "./json-validator";
@@ -47,6 +48,7 @@ export const RUNNERS: Record<string, ComponentType> = {
   "case-converter": CaseConverterRunner,
   "latex-to-pdf": LatexToPdfRunner,
   "ocr": OcrRunner,
+  "background-remover": BackgroundRemoverRunner,
   "svg-optimizer": SvgOptimizerRunner,
   "css-specificity": CssSpecificityRunner,
   "json-validator": JsonValidatorRunner,

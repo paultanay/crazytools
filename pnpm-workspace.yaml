@@ -2,7 +2,9 @@ packages:
   - '.'
 allowBuilds:
   core-js: true
+  protobufjs: true
   tesseract.js: true
 onlyBuiltDependencies:
   - core-js
+  - protobufjs
   - tesseract.js
