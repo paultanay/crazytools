@@ -6,7 +6,7 @@ export function SiteFooter() {
   return (
     <footer className="mt-16 hairline-t">
       <div className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <Logo />
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
@@ -33,11 +33,7 @@ export function SiteFooter() {
               Sign in
             </Link>
           </FooterColumn>
-          <FooterColumn title="Company">
-            <span className="text-sm text-muted-foreground">Privacy</span>
-            <span className="text-sm text-muted-foreground">Terms</span>
-            <span className="text-sm text-muted-foreground">Contact</span>
-          </FooterColumn>
+
         </div>
         <div className="hairline-t mt-10 flex flex-col items-start justify-between gap-2 pt-6 sm:flex-row sm:items-center">
           <p className="mono text-[11px] text-muted-foreground">

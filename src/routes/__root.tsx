@@ -89,18 +89,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Free browser-based tools: PDF, image, code, and text. Nothing leaves your machine.",
+          "CrazyTools: free online PDF, image, code & text tools. Nothing leaves your machine.",
       },
       { name: "author", content: "CrazyTools" },
       { property: "og:title", content: "CrazyTools" },
       {
         property: "og:description",
-        content: "Free browser-based tools. Nothing leaves your machine.",
+        content: "CrazyTools: free online PDF, image, code & text tools. Nothing leaves your machine.",
       },
+      { property: "og:image", content: "/favicon.ico" },
+      { property: "og:image:width", content: "48" },
+      { property: "og:image:height", content: "48" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "CrazyTools" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "CrazyTools" },
+      { name: "twitter:image", content: "/favicon.ico" },
       {
         name: "twitter:description",
         content: "The complete toolkit. In your browser.",

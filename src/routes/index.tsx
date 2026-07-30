@@ -13,13 +13,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "PDF, image, code, and text utilities. Nothing leaves your machine.",
+          "Free online tools: PDF, image, code & text utilities. Nothing leaves your machine.",
       },
       { property: "og:title", content: "Crazy Tools" },
       {
         property: "og:description",
         content:
-          "Free browser-based tools. Nothing leaves your machine.",
+          "Free online tools: PDF, image, code & text. Nothing leaves your machine.",
       },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },

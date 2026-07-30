@@ -35,6 +35,7 @@ const TOOL_SLUGS = [
   "case-converter",
   "latex-to-pdf",
   "ocr",
+  "background-remover",
   "svg-optimizer",
   "css-specificity",
   "json-validator",
