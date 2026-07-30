@@ -85,17 +85,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CrazyTools — The complete toolkit. In your browser." },
+      { title: "CrazyTools" },
       {
         name: "description",
         content:
-          "CrazyTools is a professional platform of free browser-based tools: PDF, image, developer, code, and text utilities. No sign-up. No limits.",
+          "Free browser-based tools: PDF, image, code, and text. Nothing leaves your machine.",
       },
       { name: "author", content: "CrazyTools" },
-      { property: "og:title", content: "CrazyTools — The complete toolkit" },
+      { property: "og:title", content: "CrazyTools" },
       {
         property: "og:description",
-        content: "Free professional-grade tools for PDF, images, code, and text. Runs in your browser.",
+        content: "Free browser-based tools. Nothing leaves your machine.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "CrazyTools" },
@@ -129,7 +129,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               url: "https://crazytools.app/",
               name: "CrazyTools",
               description:
-                "Free, browser-based tools for developers and designers. PDF, image, code, and text utilities.",
+                "Free browser-based tools: PDF, image, code, and text.",
               publisher: { "@id": "https://crazytools.app/#organization" },
               potentialAction: {
                 "@type": "SearchAction",

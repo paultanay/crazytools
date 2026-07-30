@@ -10,7 +10,7 @@ export function SiteFooter() {
           <div>
             <Logo />
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Free, browser-based tools for developers and designers. Nothing leaves your machine.
+              Free browser-based tools. Nothing leaves your machine.
             </p>
           </div>
           <FooterColumn title="Categories">

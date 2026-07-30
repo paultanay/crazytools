@@ -9,17 +9,17 @@ import { CATEGORIES, AVAILABLE_TOOLS, TOOLS } from "@/lib/tools/catalog";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Crazy Tools — Free browser-based tools for developers" },
+      { title: "Crazy Tools — Free browser-based tools" },
       {
         name: "description",
         content:
-          "Free, browser-based tools for developers and designers. PDF, image, code, and text utilities. Nothing leaves your machine.",
+          "PDF, image, code, and text utilities. Nothing leaves your machine.",
       },
-      { property: "og:title", content: "Crazy Tools — Free browser-based tools" },
+      { property: "og:title", content: "Crazy Tools" },
       {
         property: "og:description",
         content:
-          "Free, browser-based tools for developers and designers. Nothing leaves your machine.",
+          "Free browser-based tools. Nothing leaves your machine.",
       },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
@@ -41,11 +41,10 @@ function HomePage() {
             <Wrench className="h-8 w-8" strokeWidth={1.6} />
           </div>
           <h1 className="mt-8 text-5xl font-semibold tracking-tight sm:text-6xl">
-            Crazy Tools — Free browser-based tools for developers
+            Crazy Tools
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
-            Free, browser-based tools for developers and designers. Nothing leaves your
-            machine.
+            Free browser-based tools. Nothing leaves your machine.
           </p>
           <div className="mt-10">
             <AnimatedSearchHero />
