@@ -8,11 +8,11 @@ const PROMPTS = [
   "Convert images to PDF",
   "Format JSON",
   "Generate a QR code",
-  "Run Python code",
   "Encode Base64",
   "Test a regex",
-  "Compile C++",
+  "Remove background",
   "Decode a JWT",
+  "Optimize SVG",
 ];
 
 export function AnimatedSearchHero() {
