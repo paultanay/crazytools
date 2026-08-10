@@ -27,9 +27,7 @@ export function CommandPalette({ open, onOpenChange }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent
-        className="max-w-2xl overflow-hidden p-0 bg-surface border border-hairline shadow-xl [&>button.absolute]:hidden"
-      >
+      <DialogContent className="max-w-2xl overflow-hidden p-0 bg-surface border border-hairline shadow-xl [&>button.absolute]:hidden">
         <DialogTitle className="sr-only">Search tools</DialogTitle>
         <Command
           label="Tool search"
@@ -69,9 +67,7 @@ export function CommandPalette({ open, onOpenChange }: Props) {
                     <div className="flex items-center gap-3">
                       <Sparkles className="h-3.5 w-3.5 text-primary" strokeWidth={1.5} />
                       <span>{c.name}</span>
-                      <span className="mono text-xs text-muted-foreground">
-                        {c.tagline}
-                      </span>
+                      <span className="mono text-xs text-muted-foreground">{c.tagline}</span>
                     </div>
                     <ArrowRight className="h-3.5 w-3.5 text-muted-foreground opacity-0 transition-opacity group-aria-selected:opacity-100" />
                   </Command.Item>
@@ -98,9 +94,7 @@ export function CommandPalette({ open, onOpenChange }: Props) {
                       </span>
                       <div className="flex flex-col">
                         <span className="font-medium">{tool.name}</span>
-                        <span className="mono text-xs text-muted-foreground">
-                          {tool.short}
-                        </span>
+                        <span className="mono text-xs text-muted-foreground">{tool.short}</span>
                       </div>
                     </div>
                     {!tool.available && (

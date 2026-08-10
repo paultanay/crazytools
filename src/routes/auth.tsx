@@ -10,7 +10,10 @@ export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
       { title: "Sign in — CrazyTools" },
-      { name: "description", content: "Access your CrazyTools account to save favorite tools and view history." },
+      {
+        name: "description",
+        content: "Access your CrazyTools account to save favorite tools and view history.",
+      },
       { name: "robots", content: "noindex" },
     ],
   }),

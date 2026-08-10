@@ -23,19 +23,18 @@ This document describes how CrazyTools is put together, why it's designed the wa
                                         │  fetch (RPC + HTML)
                                         ▼
                      ┌──────────────────────────────────────────┐
-                     │       Cloudflare Worker (edge SSR)       │
-                     │  TanStack Start · Nitro · Vite bundle    │
+                     │           Vercel (SSR)                   │
+                     │  TanStack Start · Vite bundle            │
                      │  ┌────────────────────────────────────┐  │
                      │  │ createServerFn handlers (RPC)     │  │
-                     │  │ /api/public/* server routes       │  │
                      │  │ requireSupabaseAuth middleware    │  │
                      │  └───────────────┬────────────────────┘  │
                      └──────────────────┼───────────────────────┘
                                         │ Postgres wire · service role
                                         ▼
                      ┌──────────────────────────────────────────┐
-│        Supabase (managed PG)             │
-│  Auth · RLS · Migrations · Realtime      │
+                     │        Supabase (managed PG)             │
+                     │  Auth · RLS · Migrations · Realtime      │
                      └──────────────────────────────────────────┘
 ```
 
@@ -43,12 +42,12 @@ This document describes how CrazyTools is put together, why it's designed the wa
 
 TanStack Start code is **isomorphic by default**. The same route module runs during SSR on the Worker and during client navigation in the browser. Any code that needs a specific environment must declare that boundary explicitly:
 
-| Boundary API | Runs on | Use for |
-|---|---|---|
-| `createServerFn` | Server only | RPC calls, DB reads/writes, secret-backed APIs |
-| `createServerOnlyFn` | Server only | Server-only helpers not exposed as RPC |
-| `<ClientOnly>` | Client only | Browser-only libraries, DOM APIs |
-| `useHydrated()` | Both, gated | Render decisions that differ post-hydration |
+| Boundary API         | Runs on     | Use for                                        |
+| -------------------- | ----------- | ---------------------------------------------- |
+| `createServerFn`     | Server only | RPC calls, DB reads/writes, secret-backed APIs |
+| `createServerOnlyFn` | Server only | Server-only helpers not exposed as RPC         |
+| `<ClientOnly>`       | Client only | Browser-only libraries, DOM APIs               |
+| `useHydrated()`      | Both, gated | Render decisions that differ post-hydration    |
 
 Rules we enforce:
 
@@ -60,14 +59,14 @@ Rules we enforce:
 
 File-based routing under `src/routes/`. The Vite plugin auto-generates `src/routeTree.gen.ts` — never hand-edit it.
 
-| Path | Route file | Auth |
-|---|---|---|
-| `/` | `routes/index.tsx` | Public |
-| `/tools` | `routes/tools.tsx` + `routes/tools.index.tsx` | Public |
-| `/tools/:slug` | `routes/tools.$slug.tsx` | Public |
-| `/category/:slug` | `routes/category.$slug.tsx` | Public |
-| `/auth` | `routes/auth.tsx` | Public |
-| `/dashboard` | `routes/_authenticated/dashboard.tsx` | Auth-gated |
+| Path              | Route file                                    | Auth       |
+| ----------------- | --------------------------------------------- | ---------- |
+| `/`               | `routes/index.tsx`                            | Public     |
+| `/tools`          | `routes/tools.tsx` + `routes/tools.index.tsx` | Public     |
+| `/tools/:slug`    | `routes/tools.$slug.tsx`                      | Public     |
+| `/category/:slug` | `routes/category.$slug.tsx`                   | Public     |
+| `/auth`           | `routes/auth.tsx`                             | Public     |
+| `/dashboard`      | `routes/_authenticated/dashboard.tsx`         | Auth-gated |
 
 The `_authenticated/route.tsx` pathless layout gates its entire subtree:
 
@@ -145,7 +144,6 @@ Every table has `GRANT` statements immediately after `CREATE TABLE`, RLS enabled
 
 ## Non-goals for v1
 
-- No LaTeX → PDF (needs heavy WASM; roadmap).
-- No in-browser IDE (roadmap).
+- No in-browser IDE or code execution sandbox.
 - No user-submitted tools / marketplace.
-- No team workspaces.
+- No team workspaces or shared sessions.

@@ -41,10 +41,10 @@ Every MCP tool declares:
   "inputSchema": {
     "type": "object",
     "properties": {
-      "pdf": { "type": "string", "format": "byte", "description": "Base64-encoded PDF" }
+      "pdf": { "type": "string", "format": "byte", "description": "Base64-encoded PDF" },
     },
-    "required": ["pdf"]
-  }
+    "required": ["pdf"],
+  },
 }
 ```
 
@@ -59,9 +59,9 @@ Output is always `{ "content": [{ "type": "resource", "resource": { "uri": "data
   "mcpServers": {
     "crazytools": {
       "url": "https://crazytools.app/api/public/mcp",
-      "headers": { "Authorization": "Bearer <token>" }
-    }
-  }
+      "headers": { "Authorization": "Bearer <token>" },
+    },
+  },
 }
 ```
 

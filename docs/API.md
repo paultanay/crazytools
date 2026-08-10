@@ -29,7 +29,7 @@ Return every tool the caller has favorited.
 Array<{
   tool_slug: string;
   created_at: string; // ISO 8601
-}>
+}>;
 ```
 
 **Errors:**
@@ -48,13 +48,17 @@ Add or remove the caller's favorite for a given tool.
 **Input:**
 
 ```ts
-{ tool_slug: string } // validated with Zod; must match /^[a-z0-9-]+$/
+{
+  tool_slug: string;
+} // validated with Zod; must match /^[a-z0-9-]+$/
 ```
 
 **Output:**
 
 ```ts
-{ favorited: boolean } // final state after toggle
+{
+  favorited: boolean;
+} // final state after toggle
 ```
 
 **Errors:**
@@ -79,7 +83,7 @@ Return the caller's most recent tool runs, newest first, capped at 100.
 Array<{
   tool_slug: string;
   ran_at: string; // ISO 8601
-}>
+}>;
 ```
 
 ---
@@ -94,13 +98,17 @@ Record that the caller ran a tool. Client-side callers debounce to at most one c
 **Input:**
 
 ```ts
-{ tool_slug: string }
+{
+  tool_slug: string;
+}
 ```
 
 **Output:**
 
 ```ts
-{ ok: true }
+{
+  ok: true;
+}
 ```
 
 The server also enforces the 100-row-per-user cap by deleting the oldest overflow rows in the same transaction.
@@ -115,11 +123,7 @@ import { toggleFavorite } from "@/lib/user-data.functions";
 
 function FavoriteButton({ slug }: { slug: string }) {
   const toggle = useServerFn(toggleFavorite);
-  return (
-    <button onClick={() => toggle({ data: { tool_slug: slug } })}>
-      Favorite
-    </button>
-  );
+  return <button onClick={() => toggle({ data: { tool_slug: slug } })}>Favorite</button>;
 }
 ```
 
@@ -154,8 +158,10 @@ export const Route = createFileRoute("/api/public/example-webhook")({
         const expected = createHmac("sha256", process.env.WEBHOOK_SECRET!)
           .update(body)
           .digest("hex");
-        if (signature.length !== expected.length ||
-            !timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) {
+        if (
+          signature.length !== expected.length ||
+          !timingSafeEqual(Buffer.from(signature), Buffer.from(expected))
+        ) {
           return new Response("invalid signature", { status: 401 });
         }
         // ... handle verified payload ...
@@ -172,32 +178,32 @@ export const Route = createFileRoute("/api/public/example-webhook")({
 
 ### `profiles`
 
-| Column | Type | Notes |
-|---|---|---|
-| `id` | `uuid` PK | FK → `auth.users.id`, cascade delete |
-| `display_name` | `text` | Derived from OAuth `name` / email local part |
-| `avatar_url` | `text` | Optional |
-| `created_at` | `timestamptz` | `default now()` |
+| Column         | Type          | Notes                                        |
+| -------------- | ------------- | -------------------------------------------- |
+| `id`           | `uuid` PK     | FK → `auth.users.id`, cascade delete         |
+| `display_name` | `text`        | Derived from OAuth `name` / email local part |
+| `avatar_url`   | `text`        | Optional                                     |
+| `created_at`   | `timestamptz` | `default now()`                              |
 
 Row is created by the `handle_new_user` trigger when a new `auth.users` row appears.
 
 ### `favorites`
 
-| Column | Type | Notes |
-|---|---|---|
-| `user_id` | `uuid` | FK → `auth.users.id`, cascade delete |
-| `tool_slug` | `text` | Matches a slug in the catalog |
-| `created_at` | `timestamptz` | `default now()` |
+| Column       | Type          | Notes                                |
+| ------------ | ------------- | ------------------------------------ |
+| `user_id`    | `uuid`        | FK → `auth.users.id`, cascade delete |
+| `tool_slug`  | `text`        | Matches a slug in the catalog        |
+| `created_at` | `timestamptz` | `default now()`                      |
 
 Primary key: `(user_id, tool_slug)`. RLS: user can select/insert/delete own rows.
 
 ### `tool_history`
 
-| Column | Type | Notes |
-|---|---|---|
-| `id` | `uuid` PK | `default gen_random_uuid()` |
-| `user_id` | `uuid` | FK → `auth.users.id`, cascade delete |
-| `tool_slug` | `text` | |
-| `ran_at` | `timestamptz` | `default now()` |
+| Column      | Type          | Notes                                |
+| ----------- | ------------- | ------------------------------------ |
+| `id`        | `uuid` PK     | `default gen_random_uuid()`          |
+| `user_id`   | `uuid`        | FK → `auth.users.id`, cascade delete |
+| `tool_slug` | `text`        |                                      |
+| `ran_at`    | `timestamptz` | `default now()`                      |
 
 Index: `(user_id, ran_at desc)`. RLS: user can select/insert own rows.

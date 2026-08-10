@@ -2,11 +2,11 @@
 
 # CrazyTools
 
-**The complete toolkit. In your browser.**
+**Free browser-based tools for everyone.**
 
-A professional platform of free, browser-native utilities for documents, images, developers, and text. Precision engineered. Zero installation. Zero limits.
+25+ utilities for documents, images, developers, and text. Nothing is uploaded. Nothing leaves your machine.
 
-[Architecture](./docs/ARCHITECTURE.md) · [API](./docs/API.md) · [Contributing](./docs/CONTRIBUTING.md)
+[Live site](https://crazytools.js.org) · [Architecture](./docs/ARCHITECTURE.md) · [Contributing](./docs/CONTRIBUTING.md)
 
 </div>
 
@@ -14,14 +14,13 @@ A professional platform of free, browser-native utilities for documents, images,
 
 ## Overview
 
-CrazyTools is an enterprise-grade, single-page web platform that ships a curated catalog of high-quality utilities. Every tool runs client-side by default — files never leave the user's machine unless the tool explicitly requires a server round-trip. Signed-in users get favorites, run history, and a personal dashboard, backed by a fully managed Postgres backend with row-level security.
+CrazyTools is a free, open-source web platform shipping a curated catalog of high-quality browser-native utilities. Every tool runs client-side — files never leave the user's machine. Signed-in users get favorites, run history, and a personal dashboard, backed by a Supabase Postgres backend with row-level security.
 
 ### Highlights
 
-- **8 flagship tools in v1** — Image→PDF, PDF Compress, PDF Merge, Image Compressor, JSON Formatter, QR Generator, Base64, Markdown→PDF.
+- **25+ tools** — PDF, image, developer, text, security, converters, and generators.
 - **Universal ⌘K command palette** — one shortcut, everything reachable.
-- **Cinematic "Instrument" design system** — deep near-black canvas, electric-cyan accent, hairline dividers, precision typography.
-- **SSR + edge runtime** — TanStack Start on Cloudflare Workers, sub-100ms cold starts.
+- **SSR on Vercel** — TanStack Start, sub-100ms TTFB.
 - **Type-safe end to end** — TypeScript strict mode, generated route tree, generated database types.
 - **Zero-trust data model** — every user-owned table is RLS-gated, every server function is bearer-authenticated.
 
@@ -48,19 +47,19 @@ Full setup instructions, including backend provisioning: [`docs/DEVELOPMENT.md`]
 
 ## Technology stack
 
-| Layer | Choice | Notes |
-|---|---|---|
-| Framework | **TanStack Start v1** | File-based routing, isomorphic loaders, `createServerFn` RPC |
-| UI runtime | **React 19** | Automatic JSX transform, concurrent rendering |
-| Build | **Vite 7** | Lightning CSS, SSR, edge-target output |
-| Styling | **Tailwind CSS v4** | Native CSS `@theme`, no legacy config |
-| Components | **shadcn/ui** (new-york) | Radix primitives, fully local |
-| Motion | **Framer Motion** | Scroll-linked, cinematic transitions |
-| Data | **TanStack Query v5** | Suspense reads, router-primed cache |
-| Backend | **Supabase** (managed Postgres + Auth) | RLS, service-role isolation |
-| Deployment | **Cloudflare Workers** | Edge SSR via Nitro |
-| Language | **TypeScript** (strict) | `tsgo` for typecheck |
-| Package manager | **pnpm** | Lockfile committed |
+| Layer           | Choice                                 | Notes                                                        |
+| --------------- | -------------------------------------- | ------------------------------------------------------------ |
+| Framework       | **TanStack Start v1**                  | File-based routing, isomorphic loaders, `createServerFn` RPC |
+| UI runtime      | **React 19**                           | Automatic JSX transform, concurrent rendering                |
+| Build           | **Vite 7**                             | Lightning CSS, SSR, edge-target output                       |
+| Styling         | **Tailwind CSS v4**                    | Native CSS `@theme`, no legacy config                        |
+| Components      | **shadcn/ui** (new-york)               | Radix primitives, fully local                                |
+| Motion          | **Framer Motion**                      | Scroll-linked, cinematic transitions                         |
+| Data            | **TanStack Query v5**                  | Suspense reads, router-primed cache                          |
+| Backend         | **Supabase** (managed Postgres + Auth) | RLS, service-role isolation                                  |
+| Deployment      | **Vercel**                             | SSR via TanStack Start Vercel preset                         |
+| Language        | **TypeScript** (strict)                | `tsgo` for typecheck                                         |
+| Package manager | **pnpm**                               | Lockfile committed                                           |
 
 ---
 
@@ -120,29 +119,29 @@ crazytools/
 
 ## Scripts
 
-| Script | Purpose |
-|---|---|
-| `pnpm run dev` | Start Vite dev server with HMR |
-| `pnpm run build` | Production build (SSR bundle + client bundle) |
-| `pnpm run preview` | Preview the production bundle locally |
-| `pnpm run lint` | ESLint over `src/` |
-| `pnpm run format` | Prettier write |
+| Script             | Purpose                                       |
+| ------------------ | --------------------------------------------- |
+| `pnpm run dev`     | Start Vite dev server with HMR                |
+| `pnpm run build`   | Production build (SSR bundle + client bundle) |
+| `pnpm run preview` | Preview the production bundle locally         |
+| `pnpm run lint`    | ESLint over `src/`                            |
+| `pnpm run format`  | Prettier write                                |
 
 ---
 
 ## Documentation index
 
-| Document | What it covers |
-|---|---|
-| [Architecture](./docs/ARCHITECTURE.md) | System boundaries, data flow, execution model, why decisions were made |
-| [API reference](./docs/API.md) | Every server function and public route with input/output contracts |
-| [Development setup](./docs/DEVELOPMENT.md) | Local environment, secrets, database migrations, debugging |
-| [Deployment guide](./docs/DEPLOYMENT.md) | Edge build, environment variables, rollout, rollback |
-| [Tools catalog](./docs/TOOLS.md) | Every shipped tool, its runtime, and how to add a new one |
-| [Security model](./docs/SECURITY.md) | RLS, auth flow, secrets, threat model, disclosure |
-| [Contributing](./docs/CONTRIBUTING.md) | Branching, commits, review, code style |
-| [MCP integrations](./docs/MCP.md) | Model Context Protocol servers and how CrazyTools can be exposed as one |
-| [Changelog](./CHANGELOG.md) | Versioned release notes |
+| Document                                   | What it covers                                                          |
+| ------------------------------------------ | ----------------------------------------------------------------------- |
+| [Architecture](./docs/ARCHITECTURE.md)     | System boundaries, data flow, execution model, why decisions were made  |
+| [API reference](./docs/API.md)             | Every server function and public route with input/output contracts      |
+| [Development setup](./docs/DEVELOPMENT.md) | Local environment, secrets, database migrations, debugging              |
+| [Deployment guide](./docs/DEPLOYMENT.md)   | Edge build, environment variables, rollout, rollback                    |
+| [Tools catalog](./docs/TOOLS.md)           | Every shipped tool, its runtime, and how to add a new one               |
+| [Security model](./docs/SECURITY.md)       | RLS, auth flow, secrets, threat model, disclosure                       |
+| [Contributing](./docs/CONTRIBUTING.md)     | Branching, commits, review, code style                                  |
+| [MCP integrations](./docs/MCP.md)          | Model Context Protocol servers and how CrazyTools can be exposed as one |
+| [Changelog](./CHANGELOG.md)                | Versioned release notes                                                 |
 
 ---
 

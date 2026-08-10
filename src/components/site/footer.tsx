@@ -33,7 +33,6 @@ export function SiteFooter() {
               Sign in
             </Link>
           </FooterColumn>
-
         </div>
         <div className="hairline-t mt-10 flex flex-col items-start justify-between gap-2 pt-6 sm:flex-row sm:items-center">
           <p className="mono text-[11px] text-muted-foreground">

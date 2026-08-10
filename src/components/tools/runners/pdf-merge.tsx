@@ -59,11 +59,7 @@ export function PdfMergeRunner() {
 
   return (
     <div className="space-y-6">
-      <DropZone
-        accept="application/pdf"
-        label="Drop PDF files or click to select"
-        onFiles={add}
-      />
+      <DropZone accept="application/pdf" label="Drop PDF files or click to select" onFiles={add} />
       {items.length > 0 && (
         <>
           <ul className="divide-y divide-hairline rounded-lg border border-hairline bg-surface/40">

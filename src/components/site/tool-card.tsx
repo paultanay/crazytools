@@ -27,9 +27,7 @@ export function ToolCard({ tool }: Props) {
             </span>
           )}
         </div>
-        <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-          {tool.short}
-        </p>
+        <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">{tool.short}</p>
       </div>
     </div>
   );

@@ -58,9 +58,7 @@ export function JsonValidatorRunner() {
         </div>
         <div
           className={`mono relative flex-1 overflow-auto rounded-lg border p-4 text-[13px] leading-relaxed ${
-            parsed.ok
-              ? "border-hairline bg-surface/40"
-              : "border-destructive/40 bg-destructive/5"
+            parsed.ok ? "border-hairline bg-surface/40" : "border-destructive/40 bg-destructive/5"
           }`}
           style={{ minHeight: 420 }}
         >
@@ -92,9 +90,12 @@ function TreeNode({
   const [open, setOpen] = useState(defaultOpen ?? depth < 2);
 
   if (value === null) return <Leaf name={name} valueLabel="null" tone="muted" />;
-  if (typeof value === "string") return <Leaf name={name} valueLabel={`"${value}"`} tone="string" />;
-  if (typeof value === "number") return <Leaf name={name} valueLabel={String(value)} tone="number" />;
-  if (typeof value === "boolean") return <Leaf name={name} valueLabel={String(value)} tone="bool" />;
+  if (typeof value === "string")
+    return <Leaf name={name} valueLabel={`"${value}"`} tone="string" />;
+  if (typeof value === "number")
+    return <Leaf name={name} valueLabel={String(value)} tone="number" />;
+  if (typeof value === "boolean")
+    return <Leaf name={name} valueLabel={String(value)} tone="bool" />;
 
   const isArray = Array.isArray(value);
   const entries: Array<[string, JsonValue]> = isArray

@@ -4,26 +4,26 @@ Every tool in CrazyTools is a self-contained React component under `src/componen
 
 ## Shipped tools (v1)
 
-| Slug | Name | Category | Runtime | Notes |
-|---|---|---|---|---|
-| `image-to-pdf` | Image → PDF | PDF | Client (jsPDF) | Multi-image, drag-and-drop reorder |
-| `pdf-compress` | PDF Compress | PDF | Client (pdf-lib) | Object-stream compression, preserves text layer |
-| `pdf-merge` | PDF Merge | PDF | Client (pdf-lib) | Merge N PDFs, order preserving |
-| `image-compress` | Image Compressor | Image | Client (browser-image-compression) | Lossy WebP/JPEG with target size |
-| `json-formatter` | JSON Formatter / Validator | Developer | Client (native) | Pretty-print, minify, JSONPath (roadmap) |
-| `qr-generator` | QR Code Generator | Generators | Client (qrcode) | SVG + PNG export, ECC selectable |
-| `base64` | Base64 Encode / Decode | Text | Client (native) | UTF-8 safe, drag-and-drop file mode |
-| `markdown-to-pdf` | Markdown → PDF | Converters | Client (marked + jsPDF) | GFM, inline CSS, single-file export |
+| Slug              | Name                       | Category   | Runtime                            | Notes                                           |
+| ----------------- | -------------------------- | ---------- | ---------------------------------- | ----------------------------------------------- |
+| `image-to-pdf`    | Image → PDF                | PDF        | Client (jsPDF)                     | Multi-image, drag-and-drop reorder              |
+| `pdf-compress`    | PDF Compress               | PDF        | Client (pdf-lib)                   | Object-stream compression, preserves text layer |
+| `pdf-merge`       | PDF Merge                  | PDF        | Client (pdf-lib)                   | Merge N PDFs, order preserving                  |
+| `image-compress`  | Image Compressor           | Image      | Client (browser-image-compression) | Lossy WebP/JPEG with target size                |
+| `json-formatter`  | JSON Formatter / Validator | Developer  | Client (native)                    | Pretty-print, minify, JSONPath (roadmap)        |
+| `qr-generator`    | QR Code Generator          | Generators | Client (qrcode)                    | SVG + PNG export, ECC selectable                |
+| `base64`          | Base64 Encode / Decode     | Text       | Client (native)                    | UTF-8 safe, drag-and-drop file mode             |
+| `markdown-to-pdf` | Markdown → PDF             | Converters | Client (marked + jsPDF)            | GFM, inline CSS, single-file export             |
 
 ## Roadmap
 
-| Slug | Name | Blocker |
-|---|---|---|
-| `latex-to-pdf` | LaTeX → PDF | Heavy WASM (~30 MB), needs progressive fetch |
-| `web-ide` | Browser IDE | Monaco + language servers; separate app shell |
-| `svg-optimizer` | SVG Optimizer | Waiting on `svgo` ES2022 build |
-| `regex-tester` | Regex Tester | Ready — write runner |
-| `color-picker` | Color Picker + Palette | Ready — write runner |
+| Slug            | Name                   | Blocker                                       |
+| --------------- | ---------------------- | --------------------------------------------- |
+| `latex-to-pdf`  | LaTeX → PDF            | Heavy WASM (~30 MB), needs progressive fetch  |
+| `web-ide`       | Browser IDE            | Monaco + language servers; separate app shell |
+| `svg-optimizer` | SVG Optimizer          | Waiting on `svgo` ES2022 build                |
+| `regex-tester`  | Regex Tester           | Ready — write runner                          |
+| `color-picker`  | Color Picker + Palette | Ready — write runner                          |
 
 Roadmap entries are surfaced in the UI as disabled cards labeled "Coming soon" so users aren't surprised.
 

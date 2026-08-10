@@ -32,9 +32,7 @@ export function ToolShell({ tool, icon, children }: Props) {
             <p className="mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
               {tool.categories.join(" · ")}
             </p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
-              {tool.name}
-            </h1>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">{tool.name}</h1>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
               {tool.description}
             </p>

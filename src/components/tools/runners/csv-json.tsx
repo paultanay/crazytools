@@ -7,16 +7,21 @@ function csvToJson(csv: string): unknown[] {
   if (lines.length === 0) return [];
   const parseLine = (l: string) => {
     const out: string[] = [];
-    let cur = "", inQ = false;
+    let cur = "",
+      inQ = false;
     for (let i = 0; i < l.length; i++) {
       const c = l[i];
       if (inQ) {
-        if (c === '"' && l[i + 1] === '"') { cur += '"'; i++; }
-        else if (c === '"') inQ = false;
+        if (c === '"' && l[i + 1] === '"') {
+          cur += '"';
+          i++;
+        } else if (c === '"') inQ = false;
         else cur += c;
       } else {
-        if (c === ",") { out.push(cur); cur = ""; }
-        else if (c === '"') inQ = true;
+        if (c === ",") {
+          out.push(cur);
+          cur = "";
+        } else if (c === '"') inQ = true;
         else cur += c;
       }
     }
@@ -64,13 +69,19 @@ export function CsvJsonRunner() {
     <div className="space-y-4">
       <div className="flex gap-2">
         <button
-          onClick={() => { setMode("csv2json"); setInput("name,age\nAda,36\nGrace,85"); }}
+          onClick={() => {
+            setMode("csv2json");
+            setInput("name,age\nAda,36\nGrace,85");
+          }}
           className={`rounded-md border px-3 py-1.5 text-sm ${mode === "csv2json" ? "border-foreground bg-foreground text-background" : "border-hairline"}`}
         >
           CSV → JSON
         </button>
         <button
-          onClick={() => { setMode("json2csv"); setInput('[{"name":"Ada","age":36},{"name":"Grace","age":85}]'); }}
+          onClick={() => {
+            setMode("json2csv");
+            setInput('[{"name":"Ada","age":36},{"name":"Grace","age":85}]');
+          }}
           className={`rounded-md border px-3 py-1.5 text-sm ${mode === "json2csv" ? "border-foreground bg-foreground text-background" : "border-hairline"}`}
         >
           JSON → CSV
@@ -88,7 +99,10 @@ export function CsvJsonRunner() {
             {output}
           </pre>
           <button
-            onClick={() => { navigator.clipboard.writeText(output); toast.success("Copied"); }}
+            onClick={() => {
+              navigator.clipboard.writeText(output);
+              toast.success("Copied");
+            }}
             className="absolute right-2 top-2 rounded-md border border-hairline bg-background p-1.5 hover:bg-accent"
           >
             <Copy className="h-3.5 w-3.5" strokeWidth={1.6} />

@@ -41,11 +41,14 @@ function calcSpecificity(selector: string): Specificity {
       const inner = match[2] ? match[2].slice(1, -1) : "";
       if (inner) {
         const parts = inner.split(",").map((p) => calcSpecificity(p));
-        const highest = parts.reduce((a, b) => {
-          const av = a.ids * 10000 + a.classes * 100 + a.elements;
-          const bv = b.ids * 10000 + b.classes * 100 + b.elements;
-          return bv > av ? b : a;
-        }, { ids: 0, classes: 0, elements: 0 });
+        const highest = parts.reduce(
+          (a, b) => {
+            const av = a.ids * 10000 + a.classes * 100 + a.elements;
+            const bv = b.ids * 10000 + b.classes * 100 + b.elements;
+            return bv > av ? b : a;
+          },
+          { ids: 0, classes: 0, elements: 0 },
+        );
         ids += highest.ids;
         classes += highest.classes;
         elements += highest.elements;
@@ -137,9 +140,7 @@ export function CssSpecificityRunner() {
               >
                 <span className="mono truncate">{r.selector}</span>
                 <span className="mono tabular-nums">{r.score}</span>
-                <span className="mono tabular-nums text-muted-foreground">
-                  {r.weight}
-                </span>
+                <span className="mono tabular-nums text-muted-foreground">{r.weight}</span>
               </div>
             ))}
             {results.length === 0 && (
@@ -150,9 +151,9 @@ export function CssSpecificityRunner() {
           </div>
         </div>
         <p className="mt-3 text-[12px] leading-relaxed text-muted-foreground">
-          Specificity is expressed as three counters: IDs, classes/attributes/pseudo-classes,
-          and elements/pseudo-elements. Higher IDs beat any number of classes; higher classes
-          beat any number of elements.
+          Specificity is expressed as three counters: IDs, classes/attributes/pseudo-classes, and
+          elements/pseudo-elements. Higher IDs beat any number of classes; higher classes beat any
+          number of elements.
         </p>
       </div>
     </div>

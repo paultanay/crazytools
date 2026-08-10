@@ -28,15 +28,14 @@ The dev server binds to `http://localhost:8080` with HMR.
 
 All variables are typed and validated at build time. See [`.env.example`](../.env.example) for the current source of truth.
 
-| Variable | Scope | Required | Notes |
-|---|---|---|---|
-| `VITE_SUPABASE_URL` | Client + SSR | ✅ | Public Data API URL |
-| `VITE_SUPABASE_PUBLISHABLE_KEY` | Client + SSR | ✅ | Publishable key (safe to ship to the browser) |
-| `VITE_SUPABASE_PROJECT_ID` | Client | ✅ | Project reference |
-| `SUPABASE_URL` | Server only | ✅ | Same as `VITE_SUPABASE_URL`, injected on the Worker |
-| `SUPABASE_PUBLISHABLE_KEY` | Server only | ✅ | Same as its `VITE_` twin |
-| `SUPABASE_SERVICE_ROLE_KEY` | Server only | ✅ | **Never expose to the client** |
-
+| Variable                        | Scope        | Required | Notes                                               |
+| ------------------------------- | ------------ | -------- | --------------------------------------------------- |
+| `VITE_SUPABASE_URL`             | Client + SSR | ✅       | Public Data API URL                                 |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | Client + SSR | ✅       | Publishable key (safe to ship to the browser)       |
+| `VITE_SUPABASE_PROJECT_ID`      | Client       | ✅       | Project reference                                   |
+| `SUPABASE_URL`                  | Server only  | ✅       | Same as `VITE_SUPABASE_URL`, injected on the Worker |
+| `SUPABASE_PUBLISHABLE_KEY`      | Server only  | ✅       | Same as its `VITE_` twin                            |
+| `SUPABASE_SERVICE_ROLE_KEY`     | Server only  | ✅       | **Never expose to the client**                      |
 
 Read env inside `.handler()` bodies, never at module scope. See [`ARCHITECTURE.md`](./ARCHITECTURE.md#execution-model).
 
@@ -68,7 +67,7 @@ Full walkthrough: [`TOOLS.md`](./TOOLS.md#adding-a-new-tool). Summary:
 1. Add an entry to `src/lib/tools/catalog.ts` with a unique `slug`, `name`, `category`, and short `description`.
 2. Create a runner at `src/components/tools/runners/<slug>.tsx` that exports a default component.
 3. Register it in `src/components/tools/runners/index.ts`.
- 4. Run `pnpm run typecheck` and manually verify at `/tools/<slug>`.
+4. Run `pnpm run typecheck` and manually verify at `/tools/<slug>`.
 
 ## Database migrations
 
@@ -85,14 +84,14 @@ Skipping step 2 causes 100% of Data API requests to fail with a permission error
 
 ## Debugging
 
-| Symptom | Where to look |
-|---|---|
-| Blank screen, `500 for /src/styles.css` | Missing font/CSS package. `pnpm install`, restart dev server. |
-| `Cannot find module '@/…'` | The file doesn't exist — create it before importing. |
-| `React is not defined` at runtime | Add `import * as React from "react"` — automatic JSX transform doesn't include the namespace. |
-| `Expected 3 parts in JWT; got 1` | You're using `supabaseAdmin` for a Data API read. Switch to a publishable-key client or `requireSupabaseAuth`. |
-| Sign-out then back-button restores protected data | You skipped `queryClient.clear()`. See auth-guards knowledge. |
-| Build fails with `Unauthorized` during prerender | A public route's loader is calling a `requireSupabaseAuth` server fn. Move the call into a component or a `_authenticated/*` loader. |
+| Symptom                                           | Where to look                                                                                                                        |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Blank screen, `500 for /src/styles.css`           | Missing font/CSS package. `pnpm install`, restart dev server.                                                                        |
+| `Cannot find module '@/…'`                        | The file doesn't exist — create it before importing.                                                                                 |
+| `React is not defined` at runtime                 | Add `import * as React from "react"` — automatic JSX transform doesn't include the namespace.                                        |
+| `Expected 3 parts in JWT; got 1`                  | You're using `supabaseAdmin` for a Data API read. Switch to a publishable-key client or `requireSupabaseAuth`.                       |
+| Sign-out then back-button restores protected data | You skipped `queryClient.clear()`. See auth-guards knowledge.                                                                        |
+| Build fails with `Unauthorized` during prerender  | A public route's loader is calling a `requireSupabaseAuth` server fn. Move the call into a component or a `_authenticated/*` loader. |
 
 ## Editor conventions
 

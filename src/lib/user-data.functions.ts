@@ -15,9 +15,7 @@ export const listFavorites = createServerFn({ method: "GET" })
 
 export const toggleFavorite = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .validator((data: unknown) =>
-    z.object({ toolSlug: z.string().min(1).max(64) }).parse(data),
-  )
+  .validator((data: unknown) => z.object({ toolSlug: z.string().min(1).max(64) }).parse(data))
   .handler(async ({ data, context }) => {
     const { data: existing } = await context.supabase
       .from("favorites")
@@ -26,10 +24,7 @@ export const toggleFavorite = createServerFn({ method: "POST" })
       .maybeSingle();
 
     if (existing) {
-      const { error } = await context.supabase
-        .from("favorites")
-        .delete()
-        .eq("id", existing.id);
+      const { error } = await context.supabase.from("favorites").delete().eq("id", existing.id);
       if (error) throw new Error(error.message);
       return { favorited: false };
     }

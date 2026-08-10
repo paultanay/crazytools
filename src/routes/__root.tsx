@@ -54,7 +54,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <p className="mono text-xs uppercase tracking-[0.3em] text-destructive">Runtime error</p>
-        <h1 className="mt-4 text-2xl font-semibold tracking-tight">This surface failed to render</h1>
+        <h1 className="mt-4 text-2xl font-semibold tracking-tight">
+          This surface failed to render
+        </h1>
         <p className="mt-3 text-sm text-muted-foreground">
           A local exception was caught. Retry the request or return to the home surface.
         </p>
@@ -94,13 +96,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "CrazyTools: 25+ free online tools — PDF, image, code & text utilities. 100% browser-based. Nothing leaves your machine. No sign-up required.",
       },
       { name: "author", content: "CrazyTools" },
-      { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" },
+      {
+        name: "robots",
+        content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+      },
       { name: "theme-color", content: "#09090b" },
-      { name: "keywords", content: "free online tools, pdf tools, image compressor, json formatter, qr code generator, base64 encoder, browser tools, no upload" },
+      {
+        name: "keywords",
+        content:
+          "free online tools, pdf tools, image compressor, json formatter, qr code generator, base64 encoder, browser tools, no upload",
+      },
       { property: "og:title", content: "CrazyTools — Free Browser-Based Tools" },
       {
         property: "og:description",
-        content: "25+ free browser-based tools: PDF, image, code & text. Nothing leaves your machine.",
+        content:
+          "25+ free browser-based tools: PDF, image, code & text. Nothing leaves your machine.",
       },
       { property: "og:url", content: SITE_URL },
       { property: "og:image", content: `${SITE_URL}/og-image.png` },
@@ -116,7 +126,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image:alt", content: "CrazyTools — Free Browser-Based Tools" },
       {
         name: "twitter:description",
-        content: "25+ free browser-based tools. PDF, image, code, text. Nothing leaves your machine.",
+        content:
+          "25+ free browser-based tools. PDF, image, code, text. Nothing leaves your machine.",
       },
     ],
     links: [

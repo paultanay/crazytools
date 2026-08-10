@@ -61,9 +61,7 @@ function CategoryPage() {
           <p className="mt-3 max-w-xl text-[15px] text-muted-foreground">
             {category.tagline} {category.description}
           </p>
-          <p className="mono mt-4 text-[12px] text-muted-foreground">
-            {tools.length} tools
-          </p>
+          <p className="mono mt-4 text-[12px] text-muted-foreground">{tools.length} tools</p>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {tools.map((t, i: number) => (

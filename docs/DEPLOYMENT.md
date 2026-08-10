@@ -4,10 +4,10 @@ CrazyTools targets **Cloudflare Workers** via TanStack Start's Nitro build.
 
 ## Environments
 
-| Environment | URL | Purpose |
-|---|---|---|
-| Production | Configured domain | Published deployments |
-| Custom domain | User-configured | Optional |
+| Environment   | URL               | Purpose               |
+| ------------- | ----------------- | --------------------- |
+| Production    | Configured domain | Published deployments |
+| Custom domain | User-configured   | Optional              |
 
 Preview and production URLs are **stable** — they don't change if the project is renamed. Use them in external services (webhooks, cron, uptime probes).
 
@@ -27,14 +27,14 @@ Output is placed under `.output/`.
 
 Set via the platform's Backend UI (never commit secrets):
 
-| Variable | Where |
-|---|---|
-| `VITE_SUPABASE_URL` | Configured in deployment environment |
+| Variable                        | Where                                |
+| ------------------------------- | ------------------------------------ |
+| `VITE_SUPABASE_URL`             | Configured in deployment environment |
 | `VITE_SUPABASE_PUBLISHABLE_KEY` | Configured in deployment environment |
-| `VITE_SUPABASE_PROJECT_ID` | Configured in deployment environment |
-| `SUPABASE_URL` | Configured in deployment environment |
-| `SUPABASE_PUBLISHABLE_KEY` | Configured in deployment environment |
-| `SUPABASE_SERVICE_ROLE_KEY` | Configured, **server-only** |
+| `VITE_SUPABASE_PROJECT_ID`      | Configured in deployment environment |
+| `SUPABASE_URL`                  | Configured in deployment environment |
+| `SUPABASE_PUBLISHABLE_KEY`      | Configured in deployment environment |
+| `SUPABASE_SERVICE_ROLE_KEY`     | Configured, **server-only**          |
 
 ## Rollout
 

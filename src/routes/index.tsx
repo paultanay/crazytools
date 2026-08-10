@@ -21,8 +21,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "CrazyTools — Free Browser-Based Tools" },
       {
         property: "og:description",
-        content:
-          "25+ free online tools: PDF, image, code & text. Nothing leaves your machine.",
+        content: "25+ free online tools: PDF, image, code & text. Nothing leaves your machine.",
       },
       { property: "og:url", content: SITE_URL },
       { property: "og:type", content: "website" },
@@ -43,9 +42,7 @@ function HomePage() {
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-accent">
             <Wrench className="h-8 w-8" strokeWidth={1.6} />
           </div>
-          <h1 className="mt-8 text-5xl font-semibold tracking-tight sm:text-6xl">
-            Crazy Tools
-          </h1>
+          <h1 className="mt-8 text-5xl font-semibold tracking-tight sm:text-6xl">Crazy Tools</h1>
           <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
             Free browser-based tools. Nothing leaves your machine.
           </p>
@@ -90,6 +87,5 @@ function HomePage() {
 
       <SiteFooter />
     </div>
-
   );
 }

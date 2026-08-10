@@ -4,7 +4,9 @@ import { toast } from "sonner";
 
 export function UuidGeneratorRunner() {
   const [count, setCount] = useState(10);
-  const [ids, setIds] = useState<string[]>(() => Array.from({ length: 10 }, () => crypto.randomUUID()));
+  const [ids, setIds] = useState<string[]>(() =>
+    Array.from({ length: 10 }, () => crypto.randomUUID()),
+  );
 
   const generate = () => setIds(Array.from({ length: count }, () => crypto.randomUUID()));
   const copyAll = () => {

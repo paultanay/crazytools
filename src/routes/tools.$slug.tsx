@@ -16,10 +16,7 @@ export const Route = createFileRoute("/tools/$slug")({
   head: ({ loaderData, params }) => {
     if (!loaderData)
       return {
-        meta: [
-          { title: "Tool — CrazyTools" },
-          { name: "robots", content: "noindex" },
-        ],
+        meta: [{ title: "Tool — CrazyTools" }, { name: "robots", content: "noindex" }],
       };
     const { tool } = loaderData;
     const url = `${SITE_URL}/tools/${params.slug}`;
@@ -36,7 +33,10 @@ export const Route = createFileRoute("/tools/$slug")({
     return {
       meta: [
         { title: `${tool.name} — Free Online Tool | CrazyTools` },
-        { name: "description", content: `${tool.description} Free, browser-based, no sign-up required.` },
+        {
+          name: "description",
+          content: `${tool.description} Free, browser-based, no sign-up required.`,
+        },
         { name: "robots", content: "index, follow" },
         { property: "og:title", content: `${tool.name} — CrazyTools` },
         { property: "og:description", content: tool.description },
@@ -65,9 +65,7 @@ export const Route = createFileRoute("/tools/$slug")({
   notFoundComponent: () => (
     <div className="mx-auto max-w-2xl px-5 py-32 text-center">
       <h1 className="text-3xl font-semibold">Tool not found</h1>
-      <p className="mt-3 text-muted-foreground">
-        This tool is not part of the current catalog.
-      </p>
+      <p className="mt-3 text-muted-foreground">This tool is not part of the current catalog.</p>
       <Link
         to="/tools"
         className="mt-6 inline-flex rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground"

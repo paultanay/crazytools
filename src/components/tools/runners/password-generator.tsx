@@ -38,7 +38,11 @@ export function PasswordGeneratorRunner() {
     <div className="space-y-6">
       <div className="flex items-center gap-2 rounded-lg border border-hairline bg-card p-4">
         <code className="mono flex-1 break-all text-[15px]">{pw || "Press Generate"}</code>
-        <button onClick={copy} className="rounded-md border border-hairline p-2 hover:bg-accent" aria-label="copy">
+        <button
+          onClick={copy}
+          className="rounded-md border border-hairline p-2 hover:bg-accent"
+          aria-label="copy"
+        >
           <Copy className="h-4 w-4" strokeWidth={1.6} />
         </button>
       </div>
@@ -69,7 +73,15 @@ export function PasswordGeneratorRunner() {
   );
 }
 
-function Toggle({ label, checked, onChange }: { label: string; checked: boolean; onChange: (v: boolean) => void }) {
+function Toggle({
+  label,
+  checked,
+  onChange,
+}: {
+  label: string;
+  checked: boolean;
+  onChange: (v: boolean) => void;
+}) {
   return (
     <label className="flex cursor-pointer items-center justify-between rounded-md border border-hairline bg-card px-4 py-2 text-sm">
       {label}

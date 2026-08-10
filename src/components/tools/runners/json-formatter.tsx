@@ -83,9 +83,7 @@ export function JsonFormatterRunner() {
         </div>
         <div
           className={`mono relative flex-1 overflow-auto rounded-lg border p-4 text-[13px] leading-relaxed ${
-            error
-              ? "border-destructive/40 bg-destructive/5"
-              : "border-hairline bg-surface/40"
+            error ? "border-destructive/40 bg-destructive/5" : "border-hairline bg-surface/40"
           }`}
           style={{ minHeight: 420 }}
         >

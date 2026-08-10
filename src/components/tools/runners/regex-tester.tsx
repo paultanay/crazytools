@@ -72,18 +72,24 @@ export function RegexTesterRunner() {
                   typeof p === "string" ? (
                     <span key={i}>{p}</span>
                   ) : (
-                    <mark key={i} className="rounded bg-yellow-200 px-0.5 text-black">{p.m}</mark>
+                    <mark key={i} className="rounded bg-yellow-200 px-0.5 text-black">
+                      {p.m}
+                    </mark>
                   ),
                 )}
           </div>
-          <p className="mono text-[12px] text-muted-foreground">{matches.length} match{matches.length === 1 ? "" : "es"}</p>
+          <p className="mono text-[12px] text-muted-foreground">
+            {matches.length} match{matches.length === 1 ? "" : "es"}
+          </p>
           {matches.length > 0 && (
             <ul className="mono space-y-1 text-[12px]">
               {matches.map((m, i) => (
                 <li key={i} className="rounded border border-hairline bg-card px-3 py-2">
                   <span className="text-muted-foreground">[{m.index}]</span> {m.match}
                   {m.groups.length > 0 && (
-                    <span className="ml-2 text-muted-foreground">groups: {JSON.stringify(m.groups)}</span>
+                    <span className="ml-2 text-muted-foreground">
+                      groups: {JSON.stringify(m.groups)}
+                    </span>
                   )}
                 </li>
               ))}

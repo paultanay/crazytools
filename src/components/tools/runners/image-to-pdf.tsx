@@ -86,11 +86,7 @@ export function ImageToPdfRunner() {
 
   return (
     <div className="space-y-6">
-      <DropZone
-        onFiles={addFiles}
-        label="Drop images or click to select"
-        accept="image/*"
-      />
+      <DropZone onFiles={addFiles} label="Drop images or click to select" accept="image/*" />
 
       {images.length > 0 && (
         <>

@@ -70,11 +70,7 @@ export function FavoriteButton({ toolSlug }: Props) {
           : "border-hairline text-muted-foreground hover:text-foreground"
       }`}
     >
-      <Heart
-        className="h-3 w-3"
-        strokeWidth={1.5}
-        fill={favorited ? "currentColor" : "none"}
-      />
+      <Heart className="h-3 w-3" strokeWidth={1.5} fill={favorited ? "currentColor" : "none"} />
       {favorited ? "Saved" : "Save"}
     </button>
   );

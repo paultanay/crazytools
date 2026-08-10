@@ -5,6 +5,7 @@ All notable changes to CrazyTools are documented here. The format follows [Keep 
 ## [Unreleased]
 
 ### Planned
+
 - LaTeX → PDF (progressive WASM fetch)
 - Browser IDE (Monaco + language servers)
 - MCP server at `/api/public/mcp`
@@ -18,6 +19,7 @@ All notable changes to CrazyTools are documented here. The format follows [Keep 
 Initial public release.
 
 ### Added
+
 - Landing page with cinematic aurora hero, animated typewriter search, category rail, featured bento grid, stat band, and CTA.
 - Universal `⌘K` command palette.
 - Routes: `/`, `/tools`, `/tools/:slug`, `/category/:slug`, `/auth`, `/dashboard`.
@@ -36,6 +38,7 @@ Initial public release.
 - Enterprise-grade documentation set under `docs/`.
 
 ### Infrastructure
+
 - TanStack Start v1 on Cloudflare Workers.
 - Tailwind CSS v4 with the "Instrument" design token set.
 - TanStack Query v5 for loader-primed data reads.
@@ -43,6 +46,7 @@ Initial public release.
 - Bun as the package manager with a 24-hour minimum-release-age supply-chain guard.
 
 ### Security
+
 - All user-owned tables (`profiles`, `favorites`, `tool_history`) have explicit `GRANT`s and per-row RLS scoped to `auth.uid()`.
 - Bearer token attached to server-function calls via `attachSupabaseAuth` middleware.
 - Service-role key isolated to `*.server.ts` modules.

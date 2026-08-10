@@ -68,7 +68,9 @@ export function UnitConverterRunner() {
             key={c}
             onClick={() => onCat(c)}
             className={`rounded-md border px-3 py-1.5 text-sm ${
-              cat === c ? "border-foreground bg-foreground text-background" : "border-hairline hover:bg-accent"
+              cat === c
+                ? "border-foreground bg-foreground text-background"
+                : "border-hairline hover:bg-accent"
             }`}
           >
             {c}
@@ -82,8 +84,16 @@ export function UnitConverterRunner() {
             onChange={(e) => setValue(e.target.value)}
             className="w-full rounded-md border border-hairline bg-card px-3 py-2 text-sm outline-none focus:border-foreground/40"
           />
-          <select value={from} onChange={(e) => setFrom(e.target.value)} className="w-full rounded-md border border-hairline bg-card px-3 py-2 text-sm">
-            {units.map((u) => <option key={u} value={u}>{u}</option>)}
+          <select
+            value={from}
+            onChange={(e) => setFrom(e.target.value)}
+            className="w-full rounded-md border border-hairline bg-card px-3 py-2 text-sm"
+          >
+            {units.map((u) => (
+              <option key={u} value={u}>
+                {u}
+              </option>
+            ))}
           </select>
         </div>
         <div className="flex items-center justify-center text-muted-foreground">→</div>
@@ -93,8 +103,16 @@ export function UnitConverterRunner() {
             readOnly
             className="mono w-full rounded-md border border-hairline bg-card px-3 py-2 text-sm"
           />
-          <select value={to} onChange={(e) => setTo(e.target.value)} className="w-full rounded-md border border-hairline bg-card px-3 py-2 text-sm">
-            {units.map((u) => <option key={u} value={u}>{u}</option>)}
+          <select
+            value={to}
+            onChange={(e) => setTo(e.target.value)}
+            className="w-full rounded-md border border-hairline bg-card px-3 py-2 text-sm"
+          >
+            {units.map((u) => (
+              <option key={u} value={u}>
+                {u}
+              </option>
+            ))}
           </select>
         </div>
       </div>

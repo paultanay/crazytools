@@ -20,7 +20,8 @@ export function JwtDecoderRunner() {
 
   const parsed = useMemo(() => {
     const parts = token.split(".");
-    if (parts.length !== 3) return { error: "JWT must have three parts (header.payload.signature)." };
+    if (parts.length !== 3)
+      return { error: "JWT must have three parts (header.payload.signature)." };
     try {
       const header = JSON.parse(b64urlDecode(parts[0]));
       const payload = JSON.parse(b64urlDecode(parts[1]));
@@ -56,7 +57,9 @@ export function JwtDecoderRunner() {
 function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <p className="mono mb-2 text-[10px] uppercase tracking-widest text-muted-foreground">{title}</p>
+      <p className="mono mb-2 text-[10px] uppercase tracking-widest text-muted-foreground">
+        {title}
+      </p>
       <pre className="mono overflow-auto rounded-lg border border-hairline bg-card p-4 text-[12px] leading-relaxed">
         {children}
       </pre>

@@ -25,7 +25,6 @@ import { SvgOptimizerRunner } from "./svg-optimizer";
 import { CssSpecificityRunner } from "./css-specificity";
 import { JsonValidatorRunner } from "./json-validator";
 
-
 export const RUNNERS: Record<string, ComponentType> = {
   "image-to-pdf": ImageToPdfRunner,
   "pdf-compress": PdfCompressRunner,
@@ -33,7 +32,7 @@ export const RUNNERS: Record<string, ComponentType> = {
   "image-compress": ImageCompressRunner,
   "json-formatter": JsonFormatterRunner,
   "qr-generator": QrGeneratorRunner,
-  "base64": Base64Runner,
+  base64: Base64Runner,
   "markdown-to-pdf": MarkdownToPdfRunner,
   "html-viewer": HtmlViewerRunner,
   "regex-tester": RegexTesterRunner,
@@ -47,10 +46,9 @@ export const RUNNERS: Record<string, ComponentType> = {
   "diff-viewer": DiffViewerRunner,
   "case-converter": CaseConverterRunner,
   "latex-to-pdf": LatexToPdfRunner,
-  "ocr": OcrRunner,
+  ocr: OcrRunner,
   "background-remover": BackgroundRemoverRunner,
   "svg-optimizer": SvgOptimizerRunner,
   "css-specificity": CssSpecificityRunner,
   "json-validator": JsonValidatorRunner,
 };
-

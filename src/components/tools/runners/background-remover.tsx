@@ -52,9 +52,7 @@ export function BackgroundRemoverRunner() {
     if (!resultUrl) return;
     const resp = await fetch(resultUrl);
     const blob = await resp.blob();
-    await navigator.clipboard.write([
-      new ClipboardItem({ [blob.type]: blob }),
-    ]);
+    await navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   };
@@ -66,7 +64,11 @@ export function BackgroundRemoverRunner() {
       <div className="space-y-4">
         <label className="flex min-h-[240px] cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-hairline bg-surface/40 p-6 text-center transition-colors hover:border-foreground/40">
           {imageUrl ? (
-            <img src={currentDisplay} alt={showOriginal ? "Original" : "Result"} className="max-h-[360px] rounded-md" />
+            <img
+              src={currentDisplay}
+              alt={showOriginal ? "Original" : "Result"}
+              className="max-h-[360px] rounded-md"
+            />
           ) : (
             <>
               <Upload className="h-6 w-6 text-muted-foreground" strokeWidth={1.5} />

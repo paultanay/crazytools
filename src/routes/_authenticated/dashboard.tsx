@@ -2,7 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { listFavorites, listHistory } from "@/lib/user-data.functions";
-import { getTool, TOOLS } from "@/lib/tools/catalog";
+import { getTool, TOOLS, FEATURED_TOOLS } from "@/lib/tools/catalog";
 import { supabase } from "@/integrations/supabase/client";
 import { LogOut, Heart, History, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
@@ -10,10 +10,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
-    meta: [
-      { title: "Dashboard — CrazyTools" },
-      { name: "robots", content: "noindex" },
-    ],
+    meta: [{ title: "Dashboard — CrazyTools" }, { name: "robots", content: "noindex" }],
   }),
   component: DashboardPage,
 });
@@ -139,22 +136,20 @@ function DashboardPage() {
       <section className="mt-10">
         <h2 className="mb-4 text-lg font-semibold">Quick access</h2>
         <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
-          {TOOLS.filter((t) => t.available)
-            .slice(0, 4)
-            .map((t) => {
-              const Icon = t.icon;
-              return (
-                <Link
-                  key={t.slug}
-                  to="/tools/$slug"
-                  params={{ slug: t.slug }}
-                  className="group flex items-center gap-3 rounded-lg border border-hairline bg-surface/40 p-4 transition-colors hover:border-primary/40"
-                >
-                  <Icon className="h-4 w-4 text-primary" strokeWidth={1.5} />
-                  <span className="text-sm">{t.name}</span>
-                </Link>
-              );
-            })}
+          {FEATURED_TOOLS.slice(0, 4).map((t) => {
+            const Icon = t.icon;
+            return (
+              <Link
+                key={t.slug}
+                to="/tools/$slug"
+                params={{ slug: t.slug }}
+                className="group flex items-center gap-3 rounded-lg border border-hairline bg-surface/40 p-4 transition-colors hover:border-primary/40"
+              >
+                <Icon className="h-4 w-4 text-primary" strokeWidth={1.5} />
+                <span className="text-sm">{t.name}</span>
+              </Link>
+            );
+          })}
         </div>
       </section>
     </div>

@@ -69,7 +69,8 @@ export function PdfCompressRunner() {
       )}
       <p className="mono flex items-start gap-2 text-[11px] text-muted-foreground">
         <Info className="mt-0.5 h-3 w-3 flex-none" />
-        Compression preserves text layers, links, and metadata. Image-heavy documents yield the largest reductions.
+        Compression preserves text layers, links, and metadata. Image-heavy documents yield the
+        largest reductions.
       </p>
     </div>
   );

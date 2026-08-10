@@ -43,10 +43,18 @@ export function HashGeneratorRunner() {
       />
       <div className="space-y-3">
         {ALGOS.map((a) => (
-          <div key={a} className="flex items-center gap-3 rounded-lg border border-hairline bg-card p-3">
-            <span className="mono w-20 text-[11px] uppercase tracking-widest text-muted-foreground">{a}</span>
+          <div
+            key={a}
+            className="flex items-center gap-3 rounded-lg border border-hairline bg-card p-3"
+          >
+            <span className="mono w-20 text-[11px] uppercase tracking-widest text-muted-foreground">
+              {a}
+            </span>
             <code className="mono flex-1 break-all text-[12px]">{results[a] || "…"}</code>
-            <button onClick={() => copy(results[a] ?? "")} className="rounded-md p-1.5 hover:bg-accent">
+            <button
+              onClick={() => copy(results[a] ?? "")}
+              className="rounded-md p-1.5 hover:bg-accent"
+            >
               <Copy className="h-3.5 w-3.5" strokeWidth={1.6} />
             </button>
           </div>
