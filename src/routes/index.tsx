@@ -6,25 +6,28 @@ import { AnimatedSearchHero } from "@/components/site/animated-search-hero";
 import { ToolCard } from "@/components/site/tool-card";
 import { CATEGORIES, AVAILABLE_TOOLS, TOOLS } from "@/lib/tools/catalog";
 
+const SITE_URL = "https://crazytools.js.org";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Crazy Tools — Free browser-based tools" },
+      { title: "CrazyTools — Free Browser-Based Tools for Everyone" },
       {
         name: "description",
         content:
-          "Free online tools: PDF, image, code & text utilities. Nothing leaves your machine.",
+          "25+ free online tools: PDF merge & compress, image compressor, JSON formatter, QR code generator, Base64 encoder, and more. 100% in-browser. Nothing leaves your machine.",
       },
-      { property: "og:title", content: "Crazy Tools" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: "CrazyTools — Free Browser-Based Tools" },
       {
         property: "og:description",
         content:
-          "Free online tools: PDF, image, code & text. Nothing leaves your machine.",
+          "25+ free online tools: PDF, image, code & text. Nothing leaves your machine.",
       },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: SITE_URL },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: SITE_URL }],
   }),
   component: HomePage,
 });

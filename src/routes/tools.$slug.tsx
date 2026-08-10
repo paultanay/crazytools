@@ -4,6 +4,8 @@ import { RUNNERS } from "@/components/tools/runners";
 import { ToolShell } from "@/components/tools/tool-shell";
 import { Cog } from "lucide-react";
 
+const SITE_URL = "https://crazytools.js.org";
+
 export const Route = createFileRoute("/tools/$slug")({
   loader: ({ params }) => {
     const tool = getTool(params.slug);
@@ -20,7 +22,7 @@ export const Route = createFileRoute("/tools/$slug")({
         ],
       };
     const { tool } = loaderData;
-    const url = `/tools/${params.slug}`;
+    const url = `${SITE_URL}/tools/${params.slug}`;
     const primaryCategory = tool.categories[0] ?? "developer";
     const appCategoryMap: Record<string, string> = {
       developer: "DeveloperApplication",
@@ -33,8 +35,9 @@ export const Route = createFileRoute("/tools/$slug")({
     };
     return {
       meta: [
-        { title: `${tool.name} — CrazyTools` },
-        { name: "description", content: tool.description },
+        { title: `${tool.name} — Free Online Tool | CrazyTools` },
+        { name: "description", content: `${tool.description} Free, browser-based, no sign-up required.` },
+        { name: "robots", content: "index, follow" },
         { property: "og:title", content: `${tool.name} — CrazyTools` },
         { property: "og:description", content: tool.description },
         { property: "og:url", content: url },

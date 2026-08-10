@@ -80,39 +80,49 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const SITE_URL = "https://crazytools.js.org";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CrazyTools — Free browser-based tools" },
+      { title: "CrazyTools — Free Browser-Based Tools" },
       {
         name: "description",
         content:
-          "CrazyTools: free online PDF, image, code & text tools. Nothing leaves your machine.",
+          "CrazyTools: 25+ free online tools — PDF, image, code & text utilities. 100% browser-based. Nothing leaves your machine. No sign-up required.",
       },
       { name: "author", content: "CrazyTools" },
-      { property: "og:title", content: "CrazyTools" },
+      { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" },
+      { name: "theme-color", content: "#09090b" },
+      { name: "keywords", content: "free online tools, pdf tools, image compressor, json formatter, qr code generator, base64 encoder, browser tools, no upload" },
+      { property: "og:title", content: "CrazyTools — Free Browser-Based Tools" },
       {
         property: "og:description",
-        content: "CrazyTools: free online PDF, image, code & text tools. Nothing leaves your machine.",
+        content: "25+ free browser-based tools: PDF, image, code & text. Nothing leaves your machine.",
       },
-      { property: "og:image", content: "/favicon.ico" },
-      { property: "og:image:width", content: "48" },
-      { property: "og:image:height", content: "48" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: `${SITE_URL}/og-image.png` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "CrazyTools — Free Browser-Based Tools" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "CrazyTools" },
+      { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "CrazyTools" },
-      { name: "twitter:image", content: "/favicon.ico" },
+      { name: "twitter:title", content: "CrazyTools — Free Browser-Based Tools" },
+      { name: "twitter:image", content: `${SITE_URL}/og-image.png` },
+      { name: "twitter:image:alt", content: "CrazyTools — Free Browser-Based Tools" },
       {
         name: "twitter:description",
-        content: "The complete toolkit. In your browser.",
+        content: "25+ free browser-based tools. PDF, image, code, text. Nothing leaves your machine.",
       },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "canonical", href: SITE_URL },
     ],
     scripts: [
       { children: themeInitScript },
@@ -123,22 +133,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@graph": [
             {
               "@type": "Organization",
-              "@id": "https://crazytools.app/#organization",
+              "@id": `${SITE_URL}/#organization`,
               name: "CrazyTools",
-              url: "https://crazytools.app/",
+              url: `${SITE_URL}/`,
+              logo: {
+                "@type": "ImageObject",
+                url: `${SITE_URL}/favicon.ico`,
+              },
             },
             {
               "@type": "WebSite",
-              "@id": "https://crazytools.app/#website",
-              url: "https://crazytools.app/",
+              "@id": `${SITE_URL}/#website`,
+              url: `${SITE_URL}/`,
               name: "CrazyTools",
               description:
-                "Free browser-based tools: PDF, image, code, and text.",
-              publisher: { "@id": "https://crazytools.app/#organization" },
+                "Free browser-based tools: PDF, image, code, and text. Nothing leaves your machine.",
+              publisher: { "@id": `${SITE_URL}/#organization` },
               potentialAction: {
                 "@type": "SearchAction",
-                target:
-                  "https://crazytools.app/tools?q={search_term_string}",
+                target: `${SITE_URL}/tools?q={search_term_string}`,
                 "query-input": "required name=search_term_string",
               },
             },

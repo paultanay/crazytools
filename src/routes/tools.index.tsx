@@ -4,24 +4,27 @@ import { Search } from "lucide-react";
 import { CATEGORIES, TOOLS, type CategorySlug, searchTools } from "@/lib/tools/catalog";
 import { ToolCard } from "@/components/site/tool-card";
 
+const SITE_URL = "https://crazytools.js.org";
+
 export const Route = createFileRoute("/tools/")({
   head: () => ({
     meta: [
-      { title: "All tools — Crazy Tools" },
+      { title: "All Tools — CrazyTools" },
       {
         name: "description",
         content:
-          "Browse every tool in the Crazy Tools catalog. Filter by category or search across the index of free, browser-based utilities.",
+          "Browse all 25+ free browser-based tools in the CrazyTools catalog. Filter by category: PDF, image, developer, text, converters, generators, and security.",
       },
-      { property: "og:title", content: "All tools — Crazy Tools" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: "All Tools — CrazyTools" },
       {
         property: "og:description",
-        content: "The complete catalog of free, browser-based utility tools.",
+        content: "25+ free, browser-based utility tools. Nothing leaves your machine.",
       },
-      { property: "og:url", content: "/tools" },
+      { property: "og:url", content: `${SITE_URL}/tools` },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/tools" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/tools` }],
   }),
   component: ToolsIndex,
 });

@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /auth
+Disallow: /dashboard
 
-Sitemap: /sitemap.xml
+Sitemap: https://crazytools.js.org/sitemap.xml

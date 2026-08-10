@@ -12,6 +12,8 @@ import { SiteFooter } from "@/components/site/footer";
 import { ToolCard } from "@/components/site/tool-card";
 import { ArrowLeft } from "lucide-react";
 
+const SITE_URL = "https://crazytools.js.org";
+
 export const Route = createFileRoute("/category/$slug")({
   loader: ({ params }) => {
     const category = getCategory(params.slug);
@@ -22,14 +24,15 @@ export const Route = createFileRoute("/category/$slug")({
     return { category, tools };
   },
   head: ({ loaderData, params }) => {
-    if (!loaderData) return { meta: [{ title: "Category — Crazy Tools" }] };
+    if (!loaderData) return { meta: [{ title: "Category — CrazyTools" }] };
     const { category } = loaderData;
-    const url = `/category/${params.slug}`;
+    const url = `${SITE_URL}/category/${params.slug}`;
     return {
       meta: [
-        { title: `${category.name} tools — Crazy Tools` },
+        { title: `Free ${category.name} Tools — CrazyTools` },
         { name: "description", content: category.description },
-        { property: "og:title", content: `${category.name} tools — Crazy Tools` },
+        { name: "robots", content: "index, follow" },
+        { property: "og:title", content: `Free ${category.name} Tools — CrazyTools` },
         { property: "og:description", content: category.description },
         { property: "og:url", content: url },
         { property: "og:type", content: "website" },
