@@ -6,7 +6,7 @@ import type { LucideIcon } from "lucide-react";
 import { FavoriteButton } from "./favorite-button";
 
 interface Props {
-  tool: Omit<Tool, "icon"> & { icon?: any };
+  tool: Omit<Tool, "icon"> & { icon?: LucideIcon };
   icon?: LucideIcon;
   children: ReactNode;
 }
