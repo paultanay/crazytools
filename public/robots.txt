@@ -3,4 +3,4 @@ Allow: /
 Disallow: /auth
 Disallow: /dashboard
 
-Sitemap: https://crazytools.js.org/sitemap.xml
+Sitemap: https://crazytools.eu.cc/sitemap.xml

@@ -23,7 +23,7 @@ Initial public release.
 - Landing page with cinematic aurora hero, animated typewriter search, category rail, featured bento grid, stat band, and CTA.
 - Universal `⌘K` command palette.
 - Routes: `/`, `/tools`, `/tools/:slug`, `/category/:slug`, `/auth`, `/dashboard`.
-- 8 flagship tools:
+- 25 flagship tools:
   - Image → PDF
   - PDF Compress
   - PDF Merge

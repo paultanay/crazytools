@@ -6,7 +6,7 @@ import { AnimatedSearchHero } from "@/components/site/animated-search-hero";
 import { ToolCard } from "@/components/site/tool-card";
 import { CATEGORIES, AVAILABLE_TOOLS, TOOLS } from "@/lib/tools/catalog";
 
-const SITE_URL = "https://crazytools.js.org";
+const SITE_URL = "https://crazytools.eu.cc";
 
 export const Route = createFileRoute("/")({
   head: () => ({

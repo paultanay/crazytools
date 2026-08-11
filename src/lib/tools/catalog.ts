@@ -95,7 +95,6 @@ export interface Tool {
 }
 
 export const TOOLS: Tool[] = [
-  /*
   {
     slug: "image-to-pdf",
     name: "Image to PDF",
@@ -141,7 +140,6 @@ export const TOOLS: Tool[] = [
     available: true,
     featured: true,
   },
-  */
   {
     slug: "json-formatter",
     name: "JSON Formatter",
@@ -176,7 +174,6 @@ export const TOOLS: Tool[] = [
     available: true,
     featured: true,
   },
-  /*
   {
     slug: "markdown-to-pdf",
     name: "Markdown to PDF",
@@ -189,7 +186,6 @@ export const TOOLS: Tool[] = [
     available: true,
     featured: true,
   },
-  */
 
   {
     slug: "html-viewer",
@@ -303,7 +299,6 @@ export const TOOLS: Tool[] = [
     available: true,
   },
 
-  /*
   {
     slug: "latex-to-pdf",
     name: "LaTeX to PDF",
@@ -337,7 +332,6 @@ export const TOOLS: Tool[] = [
     keywords: ["remove", "transparent", "erase", "subject"],
     available: true,
   },
-  */
   {
     slug: "svg-optimizer",
     name: "SVG Optimizer",

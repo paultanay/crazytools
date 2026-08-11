@@ -12,7 +12,7 @@ import { SiteFooter } from "@/components/site/footer";
 import { ToolCard } from "@/components/site/tool-card";
 import { ArrowLeft } from "lucide-react";
 
-const SITE_URL = "https://crazytools.js.org";
+const SITE_URL = "https://crazytools.eu.cc";
 
 export const Route = createFileRoute("/category/$slug")({
   loader: ({ params }) => {

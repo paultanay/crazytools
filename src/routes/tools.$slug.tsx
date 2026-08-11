@@ -4,7 +4,7 @@ import { RUNNERS } from "@/components/tools/runners";
 import { ToolShell } from "@/components/tools/tool-shell";
 import { Cog } from "lucide-react";
 
-const SITE_URL = "https://crazytools.js.org";
+const SITE_URL = "https://crazytools.eu.cc";
 
 export const Route = createFileRoute("/tools/$slug")({
   loader: ({ params }) => {

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "https://crazytools.js.org";
+const BASE_URL = "https://crazytools.eu.cc";
 
 const CATEGORY_SLUGS = [
   "pdf",

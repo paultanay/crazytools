@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 import { CATEGORIES, TOOLS, type CategorySlug, searchTools } from "@/lib/tools/catalog";
 import { ToolCard } from "@/components/site/tool-card";
 
-const SITE_URL = "https://crazytools.js.org";
+const SITE_URL = "https://crazytools.eu.cc";
 
 export const Route = createFileRoute("/tools/")({
   head: () => ({
