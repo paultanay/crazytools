@@ -6,7 +6,7 @@
 
 25+ utilities for documents, images, developers, and text. Nothing is uploaded. Nothing leaves your machine.
 
-[Live site](https://crazytools.eu.cc/) · [Architecture](./docs/ARCHITECTURE.md) · [Contributing](./docs/CONTRIBUTING.md)
+[Live site](https://crazytools.eu.cc) · [Architecture](./docs/ARCHITECTURE.md) · [Contributing](./docs/CONTRIBUTING.md)
 
 </div>
 

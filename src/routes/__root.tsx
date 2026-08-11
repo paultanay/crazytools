@@ -82,7 +82,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const SITE_URL = "https://crazytools.js.org";
+const SITE_URL = "https://crazytools.eu.cc";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
