@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Copy, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 
 export function UuidGeneratorRunner() {
   const [count, setCount] = useState(10);
-  const [ids, setIds] = useState<string[]>(() =>
-    Array.from({ length: 10 }, () => crypto.randomUUID()),
-  );
+  const [ids, setIds] = useState<string[]>([]);
+
+  useEffect(() => {
+    setIds(Array.from({ length: count }, () => crypto.randomUUID()));
+  }, [count]);
 
   const generate = () => setIds(Array.from({ length: count }, () => crypto.randomUUID()));
   const copyAll = () => {
