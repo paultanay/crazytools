@@ -1,10 +1,14 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
-import { CommandPalette, useCommandPalette } from "./command-palette";
+import { useCommandPalette } from "./command-palette-state";
 import { supabase } from "@/integrations/supabase/client";
 import type { User as AuthUser } from "@supabase/supabase-js";
+
+const CommandPalette = lazy(() =>
+  import("./command-palette").then((m) => ({ default: m.CommandPalette })),
+);
 
 export function SiteNav() {
   const { open, setOpen } = useCommandPalette();
@@ -69,7 +73,11 @@ export function SiteNav() {
           </div>
         </div>
       </header>
-      <CommandPalette open={open} onOpenChange={setOpen} />
+      {open && (
+        <Suspense fallback={null}>
+          <CommandPalette open={open} onOpenChange={setOpen} />
+        </Suspense>
+      )}
     </>
   );
 }

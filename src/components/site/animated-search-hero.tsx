@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
-import { openCommandPalette } from "./command-palette";
+import { openCommandPalette } from "./command-palette-state";
 
 const PROMPTS = [
   "Compress a PDF",
