@@ -1,5 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
-import { Upload, Download, X, GripVertical, Eye, ChevronLeft, ChevronRight, Trash2 } from "lucide-react";
+import {
+  Upload,
+  Download,
+  X,
+  GripVertical,
+  Eye,
+  ChevronLeft,
+  ChevronRight,
+  Trash2,
+} from "lucide-react";
 import { jsPDF } from "jspdf";
 import { toast } from "sonner";
 import {
@@ -128,7 +137,8 @@ export function ImageToPdfRunner() {
     }
   };
 
-  const activePreviewImage = previewIndex !== null && images[previewIndex] ? images[previewIndex] : null;
+  const activePreviewImage =
+    previewIndex !== null && images[previewIndex] ? images[previewIndex] : null;
 
   return (
     <div className="space-y-6">
