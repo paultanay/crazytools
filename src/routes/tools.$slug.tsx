@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { getTool, getToolIcon, type ToolData } from "@/lib/tools/catalog";
 import { RUNNERS } from "@/components/tools/runners";
@@ -84,7 +85,9 @@ function ToolPage() {
   return (
     <ToolShell tool={tool} icon={Icon}>
       {Runner ? (
-        <Runner />
+        <Suspense fallback={<RunnerSkeleton />}>
+          <Runner />
+        </Suspense>
       ) : (
         <div className="rounded-2xl border border-hairline bg-surface/40 p-16 text-center">
           <Cog className="mx-auto h-8 w-8 text-primary" strokeWidth={1.2} />
@@ -106,5 +109,20 @@ function ToolPage() {
         </div>
       )}
     </ToolShell>
+  );
+}
+
+function RunnerSkeleton() {
+  return (
+    <div className="grid gap-6 lg:grid-cols-2">
+      <div className="space-y-4">
+        <div className="h-[240px] animate-pulse rounded-xl border border-hairline bg-surface/60" />
+        <div className="h-9 w-44 animate-pulse rounded-md bg-surface/60" />
+      </div>
+      <div className="space-y-2">
+        <div className="h-4 w-20 animate-pulse rounded bg-surface/60" />
+        <div className="h-[420px] animate-pulse rounded-md border border-hairline bg-surface/60" />
+      </div>
+    </div>
   );
 }
