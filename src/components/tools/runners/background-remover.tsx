@@ -1,6 +1,38 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Upload, Download, Loader2, ArrowLeftRight, Eraser } from "lucide-react";
 import { toast } from "sonner";
+
+type ProgressHandler = (label: string, pct: number) => void;
+
+const MODEL_CONFIG = {
+  model: "isnet_quint8",
+  output: { format: "image/png", quality: 0.9 },
+} as const;
+
+let modelPreload: Promise<void> | null = null;
+let progressHandler: ProgressHandler | null = null;
+
+const reportProgress = (key: string, current: number, total: number) => {
+  if (!progressHandler) return;
+  const pct = total > 0 ? Math.min(100, Math.round((current / total) * 100)) : 0;
+  if (key.startsWith("compute:")) {
+    progressHandler("Removing background…", pct);
+  } else {
+    progressHandler("Downloading AI model…", pct);
+  }
+};
+
+function ensureModel() {
+  if (!modelPreload) {
+    modelPreload = import("@imgly/background-removal")
+      .then(({ preload }) => preload({ ...MODEL_CONFIG, progress: reportProgress }))
+      .catch((e) => {
+        modelPreload = null;
+        throw e;
+      });
+  }
+  return modelPreload;
+}
 
 export function BackgroundRemoverRunner() {
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -10,6 +42,21 @@ export function BackgroundRemoverRunner() {
   const [showOriginal, setShowOriginal] = useState(false);
   const [copied, setCopied] = useState(false);
   const [hover, setHover] = useState(false);
+  const [progress, setProgress] = useState<{ label: string; pct: number } | null>(null);
+  const urlsRef = useRef({ imageUrl: "", resultUrl: "" });
+  urlsRef.current = { imageUrl, resultUrl };
+
+  useEffect(() => {
+    progressHandler = (label, pct) => setProgress({ label, pct });
+    ensureModel()
+      .then(() => setProgress(null))
+      .catch(() => setProgress(null));
+    return () => {
+      progressHandler = null;
+      URL.revokeObjectURL(urlsRef.current.imageUrl);
+      URL.revokeObjectURL(urlsRef.current.resultUrl);
+    };
+  }, []);
 
   const onFile = (f: File | null) => {
     if (!f) return;
@@ -26,11 +73,10 @@ export function BackgroundRemoverRunner() {
     setBusy(true);
     setShowOriginal(false);
     try {
+      await ensureModel();
       const { removeBackground } = await import("@imgly/background-removal");
-      const blob = await removeBackground(imageUrl, {
-        model: "isnet_quint8",
-        output: { format: "image/png", quality: 0.9 },
-      });
+      const blob = await removeBackground(imageUrl, { ...MODEL_CONFIG, progress: reportProgress });
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
       const url = URL.createObjectURL(blob);
       setResultUrl(url);
       toast.success("Background removed");
@@ -38,6 +84,7 @@ export function BackgroundRemoverRunner() {
       toast.error(e instanceof Error ? e.message : "Background removal failed");
     } finally {
       setBusy(false);
+      setProgress(null);
     }
   };
 
@@ -102,15 +149,37 @@ export function BackgroundRemoverRunner() {
             onChange={(e) => onFile(e.target.files?.[0] ?? null)}
           />
         </label>
-        <div className="flex flex-wrap items-center gap-3">
-          <button
-            onClick={run}
-            disabled={!file || busy}
-            className="inline-flex h-9 items-center gap-2 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-50"
-          >
-            {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Eraser className="h-4 w-4" />}
-            {busy ? "Processing…" : "Remove background"}
-          </button>
+        <div className="space-y-2">
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              onClick={run}
+              disabled={!file || busy}
+              className="inline-flex h-9 items-center gap-2 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-50"
+            >
+              {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Eraser className="h-4 w-4" />}
+              {busy ? "Processing…" : "Remove background"}
+            </button>
+          </div>
+          {progress && (
+            <div className="w-full max-w-xs space-y-1">
+              <div className="flex items-center justify-between text-[11px] text-muted-foreground">
+                <span className="flex items-center gap-1.5">
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                  {progress.label}
+                </span>
+                <span className="mono">{progress.pct}%</span>
+              </div>
+              <div className="h-1 overflow-hidden rounded-full bg-hairline">
+                <div
+                  className="h-full rounded-full bg-primary transition-[width] duration-200"
+                  style={{ width: `${progress.pct}%` }}
+                />
+              </div>
+              <p className="text-[11px] text-muted-foreground">
+                First run downloads a small AI model (~40 MB, cached afterwards)
+              </p>
+            </div>
+          )}
         </div>
       </div>
       <div className="space-y-2">

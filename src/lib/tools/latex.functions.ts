@@ -14,14 +14,28 @@ const InputSchema = z.object({
 export const compileLatex = createServerFn({ method: "POST" })
   .validator((data: unknown) => InputSchema.parse(data))
   .handler(async ({ data }) => {
-    const res = await fetch("https://latex.ytotech.com/builds/sync", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        compiler: data.compiler,
-        resources: [{ main: true, content: data.source }],
-      }),
-    });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 60_000);
+    let res: Response;
+    try {
+      res = await fetch("https://latex.ytotech.com/builds/sync", {
+        method: "POST",
+        signal: controller.signal,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          compiler: data.compiler,
+          resources: [{ main: true, content: data.source }],
+        }),
+      });
+    } catch (e) {
+      clearTimeout(timeout);
+      const aborted = e instanceof Error && e.name === "AbortError";
+      return {
+        ok: false as const,
+        error: aborted ? "Compilation timed out (60s limit)" : "Compile service unreachable",
+      };
+    }
+    clearTimeout(timeout);
 
     if (!res.ok) {
       let detail = "";
@@ -34,11 +48,8 @@ export const compileLatex = createServerFn({ method: "POST" })
       return { ok: false as const, error: detail.slice(0, 20_000) || res.statusText };
     }
     const buf = new Uint8Array(await res.arrayBuffer());
-    // Base64 encode
-    let binary = "";
-    const chunk = 0x8000;
-    for (let i = 0; i < buf.length; i += chunk) {
-      binary += String.fromCharCode(...buf.subarray(i, i + chunk));
+    if (buf.length > 5_000_000) {
+      return { ok: false as const, error: "Compiled PDF exceeds the 5 MB limit" };
     }
-    return { ok: true as const, pdfBase64: btoa(binary) };
+    return { ok: true as const, pdfBase64: Buffer.from(buf).toString("base64") };
   });

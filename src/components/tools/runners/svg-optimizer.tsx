@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { optimize } from "svgo/browser";
+import DOMPurify from "dompurify";
 import { Copy, Download, Check } from "lucide-react";
 import { toast } from "sonner";
 
@@ -96,7 +97,7 @@ export function SvgOptimizerRunner() {
             </div>
             <div
               className="flex min-h-[100px] items-center justify-center [&_svg]:max-h-[200px]"
-              dangerouslySetInnerHTML={{ __html: output }}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(output) }}
             />
           </div>
         )}
