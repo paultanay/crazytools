@@ -9,6 +9,7 @@ export function BackgroundRemoverRunner() {
   const [busy, setBusy] = useState(false);
   const [showOriginal, setShowOriginal] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [hover, setHover] = useState(false);
 
   const onFile = (f: File | null) => {
     if (!f) return;
@@ -62,7 +63,24 @@ export function BackgroundRemoverRunner() {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       <div className="space-y-4">
-        <label className="flex min-h-[240px] cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-hairline bg-surface/40 p-6 text-center transition-colors hover:border-foreground/40">
+        <label
+          onDragOver={(e) => {
+            e.preventDefault();
+            setHover(true);
+          }}
+          onDragLeave={() => setHover(false)}
+          onDrop={(e) => {
+            e.preventDefault();
+            setHover(false);
+            const f = e.dataTransfer.files?.[0];
+            if (f) onFile(f);
+          }}
+          className={`flex min-h-[240px] cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed p-6 text-center transition-colors ${
+            hover
+              ? "border-primary bg-primary/5"
+              : "border-hairline bg-surface/40 hover:border-foreground/40"
+          }`}
+        >
           {imageUrl ? (
             <img
               src={currentDisplay}
