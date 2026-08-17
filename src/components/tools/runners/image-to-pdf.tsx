@@ -172,24 +172,14 @@ export function ImageToPdfRunner() {
                     <GripVertical className="h-3 w-3 cursor-grab" />
                     Page {idx + 1}
                   </div>
-                  <div className="flex items-center gap-1">
-                    <button
-                      onClick={() => setPreviewIndex(idx)}
-                      title="Preview page"
-                      aria-label={`Preview page ${idx + 1}`}
-                      className="rounded p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-                    >
-                      <Eye className="h-3.5 w-3.5" />
-                    </button>
-                    <button
-                      onClick={() => remove(img.id)}
-                      title="Remove page"
-                      aria-label={`Remove page ${idx + 1}`}
-                      className="rounded p-1 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
-                    >
-                      <X className="h-3.5 w-3.5" />
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => remove(img.id)}
+                    title="Remove page"
+                    aria-label={`Remove page ${idx + 1}`}
+                    className="text-muted-foreground transition-colors hover:text-destructive"
+                  >
+                    <X className="h-3.5 w-3.5" />
+                  </button>
                 </div>
               </div>
             ))}
