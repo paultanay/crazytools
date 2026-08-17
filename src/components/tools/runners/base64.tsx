@@ -64,7 +64,15 @@ export function Base64Runner() {
           <ArrowRightLeft className="h-3 w-3" />
           Swap
         </button>
-        <label className="mono inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-hairline px-3 py-1.5 text-[11px] uppercase tracking-widest text-muted-foreground hover:text-foreground">
+        <label
+          onDragOver={(e) => e.preventDefault()}
+          onDrop={(e) => {
+            e.preventDefault();
+            const f = e.dataTransfer.files?.[0];
+            if (f) encodeFile(f);
+          }}
+          className="mono inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-hairline px-3 py-1.5 text-[11px] uppercase tracking-widest text-muted-foreground hover:text-foreground"
+        >
           <Upload className="h-3 w-3" />
           Encode file
           <input
