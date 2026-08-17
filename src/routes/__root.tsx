@@ -129,6 +129,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "25+ free browser-based tools. PDF, image, code, text. Nothing leaves your machine.",
       },
+      ...(import.meta.env.VITE_GOOGLE_SITE_VERIFICATION
+        ? [
+            {
+              name: "google-site-verification",
+              content: import.meta.env.VITE_GOOGLE_SITE_VERIFICATION,
+            },
+          ]
+        : []),
     ],
     links: [
       { rel: "stylesheet", href: appCss },

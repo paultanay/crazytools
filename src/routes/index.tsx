@@ -11,17 +11,18 @@ const SITE_URL = "https://crazytools.eu.cc";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "CrazyTools — Free Browser-Based Tools for Everyone" },
+      { title: "CrazyTools — 25+ Free Developer & Utility Tools (No Uploads)" },
       {
         name: "description",
         content:
-          "25+ free online tools: PDF merge & compress, image compressor, JSON formatter, QR code generator, Base64 encoder, and more. 100% in-browser. Nothing leaves your machine.",
+          "Access 25+ free online utility tools: PDF compression, image converters, JSON formatters, and generators. 100% browser-based, secure, and requires no uploads.",
       },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "CrazyTools — Free Browser-Based Tools" },
+      { property: "og:title", content: "CrazyTools — 25+ Free Developer & Utility Tools" },
       {
         property: "og:description",
-        content: "25+ free online tools: PDF, image, code & text. Nothing leaves your machine.",
+        content:
+          "Access 25+ free, highly optimized browser-based tools: PDF, image, code & text. Nothing leaves your machine.",
       },
       { property: "og:url", content: SITE_URL },
       { property: "og:type", content: "website" },

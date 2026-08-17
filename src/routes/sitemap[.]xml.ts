@@ -1,45 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import type {} from "@tanstack/react-start";
+import { CATEGORIES, TOOLS } from "@/lib/tools/catalog";
 
 const BASE_URL = "https://crazytools.eu.cc";
-
-const CATEGORY_SLUGS = [
-  "pdf",
-  "image",
-  "developer",
-  "text",
-  "converters",
-  "generators",
-  "security",
-];
-
-const TOOL_SLUGS = [
-  "image-to-pdf",
-  "pdf-compress",
-  "pdf-merge",
-  "image-compress",
-  "json-formatter",
-  "qr-generator",
-  "base64",
-  "markdown-to-pdf",
-  "html-viewer",
-  "regex-tester",
-  "jwt-decoder",
-  "password-generator",
-  "color-converter",
-  "unit-converter",
-  "hash-generator",
-  "uuid-generator",
-  "csv-json",
-  "diff-viewer",
-  "case-converter",
-  "latex-to-pdf",
-  "ocr",
-  "background-remover",
-  "svg-optimizer",
-  "css-specificity",
-  "json-validator",
-];
 
 interface SitemapEntry {
   path: string;
@@ -55,13 +17,13 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/tools", changefreq: "weekly", priority: "0.9" },
           { path: "/auth", changefreq: "yearly", priority: "0.3" },
-          ...CATEGORY_SLUGS.map((slug) => ({
-            path: `/category/${slug}`,
+          ...CATEGORIES.map((category) => ({
+            path: `/category/${category.slug}`,
             changefreq: "weekly" as const,
             priority: "0.7",
           })),
-          ...TOOL_SLUGS.map((slug) => ({
-            path: `/tools/${slug}`,
+          ...TOOLS.map((tool) => ({
+            path: `/tools/${tool.slug}`,
             changefreq: "monthly" as const,
             priority: "0.8",
           })),

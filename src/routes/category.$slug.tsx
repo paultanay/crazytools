@@ -38,6 +38,30 @@ export const Route = createFileRoute("/category/$slug")({
         { property: "og:type", content: "website" },
       ],
       links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: `Free ${category.name} Tools`,
+            description: category.description,
+            url,
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+              { "@type": "ListItem", position: 2, name: "Tools", item: `${SITE_URL}/tools` },
+              { "@type": "ListItem", position: 3, name: category.name, item: url },
+            ],
+          }),
+        },
+      ],
     };
   },
   component: CategoryPage,
