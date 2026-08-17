@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { marked, type Token, type Tokens } from "marked";
+import DOMPurify from "dompurify";
 import { jsPDF } from "jspdf";
 import { Download } from "lucide-react";
 import { toast } from "sonner";
@@ -158,7 +159,7 @@ export function MarkdownToPdfRunner() {
   const [md, setMd] = useState(SAMPLE);
   const [busy, setBusy] = useState(false);
 
-  const html = useMemo(() => marked.parse(md) as string, [md]);
+  const html = useMemo(() => DOMPurify.sanitize(marked.parse(md) as string), [md]);
 
   const buildPdf = async () => {
     setBusy(true);
