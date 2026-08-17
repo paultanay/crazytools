@@ -112,7 +112,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "25+ free browser-based tools: PDF, image, code & text. Nothing leaves your machine.",
       },
-      { property: "og:url", content: SITE_URL },
       { property: "og:image", content: `${SITE_URL}/og-image.png` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
@@ -129,11 +128,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "25+ free browser-based tools. PDF, image, code, text. Nothing leaves your machine.",
       },
+      ...(import.meta.env.VITE_GOOGLE_SITE_VERIFICATION
+        ? [
+            {
+              name: "google-site-verification",
+              content: import.meta.env.VITE_GOOGLE_SITE_VERIFICATION,
+            },
+          ]
+        : []),
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
-      { rel: "canonical", href: SITE_URL },
     ],
     scripts: [
       { children: themeInitScript },
