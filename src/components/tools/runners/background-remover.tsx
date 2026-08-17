@@ -48,6 +48,7 @@ export function BackgroundRemoverRunner() {
 
   useEffect(() => {
     progressHandler = (label, pct) => setProgress({ label, pct });
+    setProgress({ label: "Downloading AI model…", pct: 0 });
     ensureModel()
       .then(() => setProgress(null))
       .catch(() => setProgress(null));
